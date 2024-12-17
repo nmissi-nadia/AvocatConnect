@@ -116,86 +116,91 @@
 
 
         <!-- Grid cards -->
-        <div class="grid-container">
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/civil.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-px mb-[50px] bg-[#f2f5fa] grid-cols-[repeat(3,_1fr)]">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
+" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/civil.svg" alt="Avatar"  />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Droit Civil</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Domaine du droit le plus courant qui traite des litiges entre particuliers.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/property.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
+" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/property.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Droit du divorce</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Dissolution d'un mariage légalement reconnu qui varie d'un pays à l'autre.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/divorce.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
+" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/divorce.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Droit de la propriété</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Traite de la propriété/possession et de la vente de biens meubles et immeubles.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/criminal.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
+" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/criminal.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Droit pénal</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               L’État impose des règles et des réglementations contrôlant la conduite de ses citoyens.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/banking.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/banking.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Droit bancaire</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Administrer les activités bancaires, dans le but de réguler les transactions.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/chequebounce.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/chequebounce.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Droit de rebond</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Le refus de chèques est assez courant et est couvert par la Loi sur les instruments négociables.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/trademark.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/trademark.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Loi sur les marques et le droit d'auteur</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Servir l’objectif de protéger les droits d’utilisation d’une idée, d’une œuvre, d’un produit ou d’une marque originale.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/consumer.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/consumer.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black">
                 <b>Loi sur le tribunal de la consommation</b>
               </h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Des lignes directrices et des règles sont élaborées dans le but de sauvegarder les droits du consommateur.
               </p>
             </div>
           </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/trademark.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
+" data-aos="zoom-in">
+            <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/trademark.svg" alt="Avatar" style="width: 100px" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Loi sur le droit d'auteur</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
               Servir l’objectif de protéger les droits d’utilisation d’une idée, d’une œuvre, d’un produit ou d’une marque originale.
               </p>
             </div>
@@ -205,8 +210,8 @@
 
 
 
-        <div class="trial-button">
-          <a href="./client/dashboard.html"><button>Rencontrez nos avocats</button></a>
+        <div class="items-center text-center mt-[15px]">
+          <a href="./client/dashboard.html"><button class="border-[none] inline-block align-top ml-[24px] rounded-[35px] font-medium text-[#fff] leading-[26px] text-[20px] px-[35px] py-[9px] cursor-pointer !text-[20px] !pt-[13px] !pb-[13px] !pl-[60px] !pr-[60px] rounded-[2em] [box-shadow:0_1px_20px_0_rgb(0_0_0_/_14%)] hover:cursor-pointer hover:[transition:all_.2s_ease-in-out] hover:!bg-[linear-gradient(to_right,#EC008C_100%,#fc6767_10%,#EC008C_0%)]">Rencontrez nos avocats</button></a>
         </div>
         <!-- BANNER 4 -->
         <div class="banner4" data-aos="zoom-out">
@@ -216,42 +221,43 @@
             </h2>
           </div>
         </div>
-        <div class="grid-container-2" data-aos="zoom-out">
-          <div class="card">
-            <img width="90%" src="../assets/images/Layyer2.jpeg" alt="Avatar" />
-            <div class="container">
+        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] bg-[#f2f5fa] grid-cols-[repeat(4,_1fr)]" data-aos="zoom-out">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]">
+            <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/Layyer2.jpeg" alt="Avatar" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Fali Sam Nariman</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
                 Nariman has been practicing law since 1971 and was named the President of the Bar Association of India
                 in 1991.
               </p>
             </div>
           </div>
-          <div class="card">
-            <img width="90%" src="../assets/images/Harish-Salve.jpeg" alt="Avatar" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
+">
+            <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/Harish-Salve.jpeg" alt="Avatar" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Harish Salve</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
                 Harish Salve is a lawyerand human rights activistthat served as the Solicitor General of India from 1st
                 November 1999 to 3rd November 2002.
               </p>
             </div>
           </div>
-          <div class="card">
-            <img src="../assets/images/lawyer3.jpeg" alt="Avatar" width="90%" />
-            <div class="container">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]">
+            <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/lawyer3.jpeg" alt="Avatar" width="90%" />
+            <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Meenakshi Bharadwaj</b></h4>
-              <p>
+              <p class=" text-[1rem] font-['Nunito']">
                 She is an anti-land-acquisition trade unionist and civil rights, campaigner. She was a member of the
                 Chattisgarh Mukti Morcha
               </p>
             </div>
           </div>
-          <div class="card">
-            <img src="../assets/images/lawyer5.jpeg" alt="Avatar" width="90%" />
-            <div class="container">
-              <h4 style="color: black"><b>Mukul Rohtagi</b></h4>
-              <p>
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]">
+            <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/lawyer5.jpeg" alt="Avatar" width="90%" />
+            <div class="px-[16px] py-[2px]">
+              <h4 class="text-[#414a4d] text-[18px] font-['Nunito'] color-black"><b>Mukul Rohtagi</b></h4>
+              <p class=" text-[1rem] font-['Nunito']">
                 Mukul Rohtagi was appointed as a chief legal advisor for the current Prime Minister of India,
               </p>
             </div>
@@ -262,43 +268,43 @@
             <h2 class="text-center text-[2.5vw] pt-[0] px-[0] pb-[80px] text-[#414a4d] font-['Nunito']">Votre tranquillité d'esprit est notre priorité absolue!</h2>
           </div>
         </div>
-        <div class="container-3">
-          <div class="cont-card" data-aos="fade-right">
-            <div class="card-left">
-              <img src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Super-Support.svg"
+        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] grid-cols-[repeat(2,_1fr)]">
+          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-right">
+            <div class="bg-[#ffffff]">
+              <img class="items-center p-[15px]" src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Super-Support.svg"
                 alt="" />
             </div>
-            <div class="card-right">
-              <h4>Soutien au souper</h4>
-              <p>
+            <div class="w-3/4 bg-[#ffffff]">
+              <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Soutien au souper</h4>
+              <p class="text-[#707070] text-[16px] font-['Nunito']">
               Appointy est soutenu par une équipe de professionnels dévoués qui
               sont toujours disponibles par e-mail, chat et téléphone
               </p>
             </div>
           </div>
-          <div class="cont-card" data-aos="fade-left">
-            <div class="card-left">
-              <img
+          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-left">
+            <div class="bg-[#ffffff]">
+              <img class="items-center p-[15px]"
                 src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Multi-location-management.svg"
                 alt="" />
             </div>
-            <div class="card-right">
-              <h4>Gestion des multi-emplacements</h4>
-              <p>
+            <div class="w-3/4 bg-[#ffffff]">
+              <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Gestion des multi-emplacements</h4>
+              <p class="text-[#707070] text-[16px] font-['Nunito']">
               Appointy grandit avec votre entreprise ! Lorsque vous développez votre entreprise
                 vers plusieurs emplacements, Appointy permet une gestion facile de tous
                 vos sites et clients à partir d'un portail d'administration centralisé
               </p>
             </div>
           </div>
-          <div class="cont-card" data-aos="fade-right">
-            <div class="card-left">
-              <img src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Frame-14.svg"
+          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-right">
+            <div class="bg-[#ffffff]">
+              <img class="items-center p-[15px]" src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Frame-14.svg"
                 alt="" />
             </div>
-            <div class="card-right">
-              <h4>Assistance à l'installation gratuite et migration facile</h4>
-              <p>
+            <div class="w-3/4 bg-[#ffffff]">
+              <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Assistance à l'installation gratuite et migration facile</h4>
+              <p class="text-[#707070] text-[16px] font-['Nunito']">
               Intégration facile et assistance à la configuration personnalisée gratuite de
                 des personnes qui ont intégré des milliers d'entreprises, vous obtenez
                 a commencé avec Appointy en un rien de temps. Besoin de passer de votre
@@ -306,14 +312,14 @@
               </p>
             </div>
           </div>
-          <div class="cont-card" data-aos="fade-left">
-            <div class="card-left">
-              <img src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Security.svg"
+          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-left">
+            <div class="bg-[#ffffff]">
+              <img class="items-center p-[15px]" src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Security.svg"
                 alt="" />
             </div>
-            <div class="card-right">
-              <h4>Sécurité</h4>
-              <p>
+            <div class="w-3/4 bg-[#ffffff]">
+              <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Sécurité</h4>
+              <p class="text-[#707070] text-[16px] font-['Nunito']">
               Nous prenons la sécurité des données des clients très au sérieux. Vos données sont
                 sécurisé, sauvegardé sur le cloud, et vous en conservez l’entière propriété.
                 Notre application est hébergée sur Google Cloud qui adhère aux
@@ -328,7 +334,7 @@
     </main>
     <!-- Footer -->
     <footer class="footer">
-          <div class="container">
+          <div class="px-[16px] py-[2px]">
             <div class="row">
               <div class="footer-col">
                 <h4>Entreprise</h4>
