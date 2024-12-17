@@ -10,24 +10,7 @@ ul{
 	list-style: none;
 }
 
-.footer-col ul li:not(:last-child){
-	margin-bottom: 10px;
-}
-.footer-col ul li a{
-	font-size: 16px;
-	text-transform: capitalize;
-	color: black;
-    margin-left: -30px;
-	text-decoration: none;
-	font-weight: 300;
-	color: black;
-	display: block;
-	transition: all 0.3s ease;
-}
-.footer-col ul li a:hover{
-	color: black;
-	padding-left: 8px;
-}
+
 .footer-col .social-links a{
 	display: inline-block;
 	height: 40px;
