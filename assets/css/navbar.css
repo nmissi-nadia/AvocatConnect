@@ -1,28 +1,8 @@
-.navbar {
-    top: 0;
-    display: flex;
-    z-index: 100;
-    width: 100%;
-    position: fixed;
-    background-color: white;
-    align-items: center;
-    height: 70px;
-    justify-content: space-between;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
-}
 
-.right-nav {
-    display: flex;
-    align-items: center;
-    width: 150px;
-    justify-content: space-between;
-    margin-left: 40px;
-}
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-}
+
+
+
 
 a,
 a:link,

@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,43 +10,66 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="icon" type="image/x-icon" href="../assets/images/justice.png" />
-  <link rel="stylesheet" href="../assets/css/navbar.css" />
+ 
   <title>AvocatConnect</title>
 </head>
 
 <body>
   <div class="App">
     <!-- NavBar -->
-    <nav class="navbar">
-      <div class="right-nav">
-        <a href="./HomePage.html"><img width="30" src="../assets/images/legal-services.png" alt="" /></a>
-        <h4>AvocatConnect</h4>
-      </div>
-      <div class="nav">
-        <a href="./HomePage.html">
-          <p>Accueil</p>
-        </a>
-        <p></p>
-        <a href="./client/dashboard.php">
-          <p>Trouver un avocat</p>
-        </a>
-        <p></p>
-        <a href="./dashboard.html">
-          <p>Mes réservations</p>
-        </a>
-        <p></p>
-        <p>
-          <i class="fa-regular fa-user" style="color: #d043b6"></i>&nbsp;&nbsp;<span id="profile">Profile</span>
-        </p>
-        <p></p>
-        <div id="signup-logout-btn">
-          <a href="userlogin.php"></a>
-        </div>
-        <div id="space"></div>
-      </div>
-    </nav>
+    <nav class="fixed top-0 w-full h-[70px] flex items-center justify-between bg-white shadow-md z-[100]">
+  <!-- Logo -->
+  <div class="flex items-center w-[150px] justify-between ml-[20px] md:ml-[40px]">
+    <a href="#" class="scale-[3] md:scale-[4]">
+      <img width="30" src="../assets/images/logo.png" alt="Logo du site" />
+    </a>
+  </div>
+
+  <!-- Menu responsive -->
+  <div class="flex items-center">
+    <!-- Icone de menu pour mobile -->
+    <button class="block md:hidden text-2xl text-gray-700 mr-4" id="menu-toggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Liens de navigation -->
+  <div class="hidden md:flex justify-between items-center gap-6">
+    <a href="#" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+      Accueil
+    </a>
+    <a href="./client/dashboard.php" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+      Trouver un avocat
+    </a>
+    <a href="./dashboard.html" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+      Mes réservations
+    </a>
+    <p class="flex items-center text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+      <i class="fa-regular fa-user text-pink-500"></i>&nbsp;&nbsp;<span id="profile">Profile</span>
+    </p>
+  </div>
+
+  <!-- Espace et bouton de déconnexion -->
+  <div class="hidden md:flex items-center">
+    <a href="userlogin.php" class="text-[15px] font-medium text-white leading-[26px] py-[9px] px-[25px] bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md transition-all duration-200 ease-in-out hover:bg-gradient-to-r hover:from-[#EC008C] hover:to-[#fc6767]">
+      Connexion
+    </a>
+    <div class="w-[50px]"></div>
+  </div>
+</nav>
+
+<!-- Menu responsive (caché par défaut) -->
+<div id="mobile-menu" class="hidden flex-col bg-white shadow-md absolute top-[70px] w-full p-4 md:hidden">
+  <a href="#" class="py-2 text-gray-600 hover:text-pink-300">Accueil</a>
+  <a href="./client/dashboard.php" class="py-2 text-gray-600 hover:text-pink-300">Trouver un avocat</a>
+  <a href="./dashboard.html" class="py-2 text-gray-600 hover:text-pink-300">Mes réservations</a>
+  <a href="userlogin.php" class="py-2 text-white bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full text-center">Connexion</a>
+</div>
+
+    
     <!-- Navbar Ends -->
 
     <main class="mybody">
@@ -84,7 +107,7 @@
           </div>
         </div>
         <div class="banner-right" data-aos="flip-left" data-aos-duration="1500">
-          <img width="100%" height="100%" src="../assets/Images/ladki.png" alt="" />
+          <img width="100%" height="100%" src="../assets/Images/ladki.png" alt="Women Lawyer" />
         </div>
       </div>
       <!--  -->
