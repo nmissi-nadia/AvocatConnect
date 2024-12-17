@@ -68,7 +68,7 @@
     
     <!-- Navbar Ends -->
 
-    <main class="mx-auto my-[180px]  h-[4000px] w-4/5 m-auto">
+    <main class="mx-auto mt-[180px]  h-auto w-4/5 m-auto">
       <!-- Body -->
       <div class="mt-[50px] w-full flex justify-around" data-aos="fade-right">
         <div class="w-[45%]">
@@ -116,7 +116,7 @@
 
 
         <!-- Grid cards -->
-        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-px mb-[50px] bg-[#f2f5fa] grid-cols-[repeat(3,_1fr)]">
+        <div class="grid md:scale[0.5] pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-px mb-[50px] bg-[#f2f5fa] grid-cols-[repeat(3,_1fr)]">
           <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
 " data-aos="zoom-in">
             <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/civil.svg" alt="Avatar"  />
@@ -221,7 +221,7 @@
             </h2>
           </div>
         </div>
-        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] bg-[#f2f5fa] grid-cols-[repeat(4,_1fr)]" data-aos="zoom-out">
+        <div class="grid md:scale[0.5] pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] bg-[#f2f5fa] grid-cols-[repeat(4,_1fr)]" data-aos="zoom-out">
           <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]">
             <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/Layyer2.jpeg" alt="Avatar" />
             <div class="px-[16px] py-[2px]">
@@ -232,8 +232,7 @@
               </p>
             </div>
           </div>
-          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
-">
+          <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]">
             <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/Harish-Salve.jpeg" alt="Avatar" />
             <div class="px-[16px] py-[2px]">
               <h4 style="color: black"><b>Harish Salve</b></h4>
@@ -334,7 +333,7 @@
     </main>
     <!-- Footer -->
     <footer class="bg-[#ffffff] px-[0] py-[70px]">
-          <div class="max-w-[1170px] m-auto">
+          <div class="w-full m-auto">
             <div class="flex flex-wrap">
               <div class="w-1/5 px-[20px] py-[0]">
                 <h4 class="text-[18px] text-[black] capitalize mb-[35px] font-medium relative before:content-[''] before:absolute before:left-[0] before:-bottom-[10px] before:bg-[#e91e63] before:h-[2px] before:box-border before:w-[50px]">Entreprise</h4>
@@ -378,7 +377,6 @@
         </footer>
 </body>
 <script src="https://kit.fontawesome.com/422003c0e3.js" crossorigin="anonymous"></script>
-<!-- <script src="./Homepage.js"></script> -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
   AOS.init();
