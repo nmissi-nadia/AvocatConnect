@@ -17,8 +17,8 @@
   <title>AvocatConnect</title>
 </head>
 
-<body class="m-0 p-0">
-  <div class="h-auto m-auto">
+<body class="m-0 p-0 mx-auto">
+  <div class="h-auto m-auto justify-center">
     
     <nav class="fixed top-0 w-full h-[70px] flex items-center justify-between bg-white shadow-md z-[100]">
       
@@ -99,7 +99,7 @@
 
 
           <div class="mt-[50px]">
-            <button class="start-now">Commencez maintenant !</button>
+            <button class="border-[none] align-top ml-[24px] font-medium text-[#fff] leading-[26px] px-[35px] py-[9px] [background-size:200%_100%] cursor-pointer !bg-[linear-gradient(to_right,#EC008C_0%,#fc6767_50%,#EC008C_100%)] !text-[20px] !pt-[13px] !pb-[13px] !pl-[60px] !pr-[60px] inline-block rounded-[2em] [box-shadow:0_1px_20px_0_rgb(0_0_0_/_14%)] cursor-pointer [transition:all_.2s_ease-in-out] bg-[linear-gradient(to_right,#EC008C_100%,#fc6767_10%,#EC008C_0%)]">Commencez maintenant !</button>
           </div>
         </div>
         <div class="w-[50%] h-[100%]" data-aos="flip-left" data-aos-duration="1500">
@@ -109,7 +109,7 @@
       <!--  -->
       <div class="banner2" data-aos="fade-left">
         <div>
-          <h2>
+          <h2 class="text-center text-[2.5vw] pt-[0] px-[0] pb-[80px] text-[#414a4d] font-['Nunito']">
           Recherchez les meilleurs avocats dans votre <br />Proximité.
           </h2>
         </div>
@@ -211,7 +211,7 @@
         <!-- BANNER 4 -->
         <div class="banner4" data-aos="zoom-out">
           <div>
-            <h2>
+            <h2 class="text-center text-[2.5vw] pt-[0] px-[0] pb-[80px] text-[#414a4d] font-['Nunito']">
             Avocats les mieux notés en Maroc
             </h2>
           </div>
@@ -259,7 +259,7 @@
         </div>
         <div class="banner4">
           <div>
-            <h2>Votre tranquillité d'esprit est notre priorité absolue!</h2>
+            <h2 class="text-center text-[2.5vw] pt-[0] px-[0] pb-[80px] text-[#414a4d] font-['Nunito']">Votre tranquillité d'esprit est notre priorité absolue!</h2>
           </div>
         </div>
         <div class="container-3">
