@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="icon" type="image/x-icon" href="../assets/images/justice.png" />
   <link rel="stylesheet" href="../assets/css/navbar.css" />
-  <title>Law Connect</title>
+  <title>AvocatConnect</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     <nav class="navbar">
       <div class="right-nav">
         <a href="./HomePage.html"><img width="30" src="../assets/images/legal-services.png" alt="" /></a>
-        <h4>Law Connect</h4>
+        <h4>AvocatConnect</h4>
       </div>
       <div class="nav">
         <a href="./HomePage.html">

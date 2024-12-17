@@ -67,7 +67,7 @@
                     <p>Enter your details and start booking with us</p>
                     <button class="ghost" id="signUp">Sign Up</button>
 
-                    <a href="./lawyerReg.html">
+                    <a href="avocat/lawyerReg.php">
                         <h3 style="border-radius: 20px;
                     border: 1px solid #20a87e;
                     background-color: #20a87e;
@@ -90,7 +90,7 @@
 
 </html>
 
-<script type="text/javascript" src="./Scripts/userloginscript.js">
+<script type="text/javascript" src="../assets/js/userloginscript.js">
 
 
 
