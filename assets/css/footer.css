@@ -6,43 +6,10 @@ body{
 	font-family: 'Poppins', sans-serif;
 }
 
-.container{
-	max-width: 1170px;
-	margin:auto;
-}
-.row{
-	display: flex;
-	flex-wrap: wrap;
-}
 ul{
 	list-style: none;
 }
-.footer{
-	background-color: #ffffff;
-    padding: 70px 0;
-}
-.footer-col{
-   width: 20%;
-   padding: 0 20px;
-}
-.footer-col h4{
-	font-size: 18px;
-	color: black;
-	text-transform: capitalize;
-	margin-bottom: 35px;
-	font-weight: 500;
-	position: relative;
-}
-.footer-col h4::before{
-	content: '';
-	position: absolute;
-	left:0;
-	bottom: -10px;
-	background-color: #e91e63;
-	height: 2px;
-	box-sizing: border-box;
-	width: 50px;
-}
+
 .footer-col ul li:not(:last-child){
 	margin-bottom: 10px;
 }

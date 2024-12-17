@@ -18,7 +18,7 @@
 </head>
 
 <body class="m-0 p-0 mx-auto">
-  <div class="h-auto m-auto justify-center">
+  <div class="h-auto mt-20 justify-center">
     
     <nav class="fixed top-0 w-full h-[70px] flex items-center justify-between bg-white shadow-md z-[100]">
       
@@ -68,7 +68,7 @@
     
     <!-- Navbar Ends -->
 
-    <main class="mx-[0] my-[180px] pt-[70px] h-[4000px] w-4/5 m-auto">
+    <main class="mx-auto my-[180px]  h-[4000px] w-4/5 m-auto">
       <!-- Body -->
       <div class="mt-[50px] w-full flex justify-around" data-aos="fade-right">
         <div class="w-[45%]">
@@ -333,39 +333,39 @@
       </div>
     </main>
     <!-- Footer -->
-    <footer class="footer">
-          <div class="px-[16px] py-[2px]">
-            <div class="row">
-              <div class="footer-col">
-                <h4>Entreprise</h4>
+    <footer class="bg-[#ffffff] px-[0] py-[70px]">
+          <div class="max-w-[1170px] m-auto">
+            <div class="flex flex-wrap">
+              <div class="w-1/5 px-[20px] py-[0]">
+                <h4 class="text-[18px] text-[black] capitalize mb-[35px] font-medium relative before:content-[''] before:absolute before:left-[0] before:-bottom-[10px] before:bg-[#e91e63] before:h-[2px] before:box-border before:w-[50px]">Entreprise</h4>
                 <ul>
-                  <li><a href="#">à propos de nous</a></li>
-                  <li><a href="#">nos services</a></li>
-                  <li><a href="#">politique de confidentialité</a></li>
-                  <li><a href="#">programme d'affiliation</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">à propos de nous</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">nos services</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">politique de confidentialité</a></li>
+                  <li><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">programme d'affiliation</a></li>
                 </ul>
               </div>
-              <div class="footer-col">
-                <h4>obtenir de l'aide</h4>
+              <div class="w-1/5 px-[20px] py-[0]">
+                <h4 class="text-[18px] text-[black] capitalize mb-[35px] font-medium relative before:content-[''] before:absolute before:left-[0] before:-bottom-[10px] before:bg-[#e91e63] before:h-[2px] before:box-border before:w-[50px]">obtenir de l'aide</h4>
                 <ul>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Contactez-nous</a></li>
-                  <li><a href="#">Politiques juridiques</a></li>
-                  <li><a href="#">Retour</a></li>
-                  <li><a href="#">Centre d'assistance</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">FAQ</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Contactez-nous</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Politiques juridiques</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Retour</a></li>
+                  <li><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Centre d'assistance</a></li>
                 </ul>
               </div>
-              <div class="footer-col">
-                <h4>Ventes</h4>
+              <div class="w-1/5 px-[20px] py-[0]">
+                <h4 class="text-[18px] text-[black] capitalize mb-[35px] font-medium relative before:content-[''] before:absolute before:left-[0] before:-bottom-[10px] before:bg-[#e91e63] before:h-[2px] before:box-border before:w-[50px]">Ventes</h4>
                 <ul>
-                  <li><a href="#">Contacter le service commercial</a></li>
-                  <li><a href="#">Forfaits et tarifs</a></li>
-                  <li><a href="#">Demander une démo</a></li>
-                  <li><a href="#">Webinaires et événements</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Contacter le service commercial</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Forfaits et tarifs</a></li>
+                  <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Demander une démo</a></li>
+                  <li><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Webinaires et événements</a></li>
                 </ul>
               </div>
-              <div class="footer-col">
-                <h4>follow us</h4>
+              <div class="w-1/5 px-[20px] py-[0]">
+                <h4 class="text-[18px] text-[black] capitalize mb-[35px] font-medium relative before:content-[''] before:absolute before:left-[0] before:-bottom-[10px] before:bg-[#e91e63] before:h-[2px] before:box-border before:w-[50px]">follow us</h4>
                 <div class="social-links">
                   <a href="#"><i class="fab fa-facebook-f"></i></a>
                   <a href="#"><i class="fab fa-twitter"></i></a>
