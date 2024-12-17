@@ -240,7 +240,7 @@
         </div>
         <div class="banner4">
           <div>
-            <h2>Your peace of mind is our top priority!</h2>
+            <h2>Votre tranquillité d'esprit est notre priorité absolue!</h2>
           </div>
         </div>
         <div class="container-3">
@@ -250,10 +250,10 @@
                 alt="" />
             </div>
             <div class="card-right">
-              <h4>Supper Support</h4>
+              <h4>Soutien au souper</h4>
               <p>
-                Appointy is supported by a team of dedicated professionals who
-                are always available via email, chat and phone
+              Appointy est soutenu par une équipe de professionnels dévoués qui
+              sont toujours disponibles par e-mail, chat et téléphone
               </p>
             </div>
           </div>
@@ -264,11 +264,11 @@
                 alt="" />
             </div>
             <div class="card-right">
-              <h4>Multi-Location Management</h4>
+              <h4>Gestion des multi-emplacements</h4>
               <p>
-                Appointy grows with your business! When you expand your business
-                to multiple locations, Appointy allows easy management of all
-                your locations & clients from a centralized admin portal
+              Appointy grandit avec votre entreprise ! Lorsque vous développez votre entreprise
+                vers plusieurs emplacements, Appointy permet une gestion facile de tous
+                vos sites et clients à partir d'un portail d'administration centralisé
               </p>
             </div>
           </div>
@@ -278,12 +278,12 @@
                 alt="" />
             </div>
             <div class="card-right">
-              <h4>Free Setup Assistance & Easy Migration</h4>
+              <h4>Assistance à l'installation gratuite et migration facile</h4>
               <p>
-                Easy onboarding and free personalized setup assistance from
-                people who have onboarded thousands of businesses, you get
-                started with Appointy in no time. Need to shift from your
-                existing system? We take care of everything!
+              Intégration facile et assistance à la configuration personnalisée gratuite de
+                des personnes qui ont intégré des milliers d'entreprises, vous obtenez
+                a commencé avec Appointy en un rien de temps. Besoin de passer de votre
+                système existant ? Nous nous occupons de tout !
               </p>
             </div>
           </div>
@@ -293,12 +293,12 @@
                 alt="" />
             </div>
             <div class="card-right">
-              <h4>Security</h4>
+              <h4>Sécurité</h4>
               <p>
-                We take customer data security very seriously. Your data is
-                safe, backed-up on cloud, and you retain its complete ownership.
-                Our application is hosted on Google Cloud which adheres to the
-                highest standards of reliability and data security
+              Nous prenons la sécurité des données des clients très au sérieux. Vos données sont
+                sécurisé, sauvegardé sur le cloud, et vous en conservez l’entière propriété.
+                Notre application est hébergée sur Google Cloud qui adhère aux
+                normes les plus élevées de fiabilité et de sécurité des données
               </p>
             </div>
           </div>
@@ -312,31 +312,31 @@
           <div class="container">
             <div class="row">
               <div class="footer-col">
-                <h4>company</h4>
+                <h4>Entreprise</h4>
                 <ul>
-                  <li><a href="#">about us</a></li>
-                  <li><a href="#">our services</a></li>
-                  <li><a href="#">privacy policy</a></li>
-                  <li><a href="#">affiliate program</a></li>
+                  <li><a href="#">à propos de nous</a></li>
+                  <li><a href="#">nos services</a></li>
+                  <li><a href="#">politique de confidentialité</a></li>
+                  <li><a href="#">programme d'affiliation</a></li>
                 </ul>
               </div>
               <div class="footer-col">
-                <h4>get help</h4>
+                <h4>obtenir de l'aide</h4>
                 <ul>
                   <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Legal Policies</a></li>
-                  <li><a href="#">Feedback</a></li>
-                  <li><a href="#">Support Center</a></li>
+                  <li><a href="#">Contactez-nous</a></li>
+                  <li><a href="#">Politiques juridiques</a></li>
+                  <li><a href="#">Retour</a></li>
+                  <li><a href="#">Centre d'assistance</a></li>
                 </ul>
               </div>
               <div class="footer-col">
-                <h4>Sales</h4>
+                <h4>Ventes</h4>
                 <ul>
-                  <li><a href="#">Contact Sales</a></li>
-                  <li><a href="#">Plans & Pricing</a></li>
-                  <li><a href="#">Request a Demo</a></li>
-                  <li><a href="#">Webinars and Events</a></li>
+                  <li><a href="#">Contacter le service commercial</a></li>
+                  <li><a href="#">Forfaits et tarifs</a></li>
+                  <li><a href="#">Demander une démo</a></li>
+                  <li><a href="#">Webinaires et événements</a></li>
                 </ul>
               </div>
               <div class="footer-col">
