@@ -8,7 +8,7 @@ cd /d "C:\laragon\www\AvocatConnect"
 git add .
 
 :: Commit avec un message automatique
-git commit -m "Mise a jour de fichier "
+git commit -m "Intégration de partie frontend page d'accueil "
 
 :: Pousser les modifications sur la branche principale (main ou master)
 git push origin main

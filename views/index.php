@@ -26,15 +26,15 @@
       </div>
       <div class="nav">
         <a href="./HomePage.html">
-          <p>Home</p>
+          <p>Accueil</p>
         </a>
         <p></p>
-        <a href="./appointment.html">
-          <p>Find A Lawyer</p>
+        <a href="./client/dashboard.php">
+          <p>Trouver un avocat</p>
         </a>
         <p></p>
         <a href="./dashboard.html">
-          <p>My Bookings</p>
+          <p>Mes réservations</p>
         </a>
         <p></p>
         <p>
@@ -54,33 +54,33 @@
       <div class="banner" data-aos="fade-right">
         <div class="banner-left">
           <h1>
-            A law firm
-            with a passion for success.
+          Un cabinet d'avocats
+          avec une passion pour le succès.
           </h1>
           <!-- <h1>Reputation,Respect & Result</h1> -->
           <p>
             <img class="hammersec3" src="../assets/images/hammer (2).png" alt="xc" />
-            Most Reputed Lawyers & Attorneys for you
+            Les avocats les plus réputés pour vous
           </p>
           <div class="sec3para">
-            Law and justice are very important parts of any society. Be it
-            developed or developing, every country has a need for justice,
-            fairness and rule of law. A large part of that institution is
-            Lawyers who help provide justice to the citizens.
+          Le droit et la justice sont des éléments très importants de toute société. Que ce soit
+            développé ou en développement, chaque pays a besoin de justice,
+            l'équité et la primauté du droit. Une grande partie de cette institution est
+            Des avocats qui contribuent à rendre justice aux citoyens.
           </div>
           <p>
             <img class="hammersec3" src="../assets/images/hammer (2).png" alt="xc" />
-            We will for your justice and rights
+            Nous défendrons votre justice et vos droits
           </p>
           <div class="sec3para">
-            Justice means leaving people alone, to others it means being morally correct. Even more people think justice
-            is derived from the agreement of most people, and others think justice is fair distributions of resources.
+          La justice signifie laisser les gens tranquilles, pour les autres, cela signifie être moralement correct. Encore plus de gens pensent à la justice
+          découle de l’accord de la plupart des gens, tandis que d’autres pensent que la justice est une répartition équitable des ressources.
           </div>
       
 
 
           <div class="btn">
-            <button class="start-now">Get started Now!</button>
+            <button class="start-now">Commencez maintenant !</button>
           </div>
         </div>
         <div class="banner-right" data-aos="flip-left" data-aos-duration="1500">
@@ -91,7 +91,7 @@
       <div class="banner2" data-aos="fade-left">
         <div>
           <h2>
-            Seach for best lawyers in your <br />Proximity.
+          Recherchez les meilleurs avocats dans votre <br />Proximité.
           </h2>
         </div>
 
@@ -101,63 +101,63 @@
           <div class="card" data-aos="zoom-in">
             <img src="../assets/images/civil.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
-              <h4 style="color: black"><b>Civil Law</b></h4>
+              <h4 style="color: black"><b>Droit Civil</b></h4>
               <p>
-                Most common field of law that deals with disputes among individuals.
-              </p>
-            </div>
-          </div>
-          <div class="card" data-aos="zoom-in">
-            <img src="../assets/images/divorce.svg" alt="Avatar" style="width: 100px" />
-            <div class="container">
-              <h4 style="color: black"><b>Divorce Law</b></h4>
-              <p>
-                Dissolution of a legally recognized marriage that varies from country to country.
+              Domaine du droit le plus courant qui traite des litiges entre particuliers.
               </p>
             </div>
           </div>
           <div class="card" data-aos="zoom-in">
             <img src="../assets/images/property.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
-              <h4 style="color: black"><b>Property Law</b></h4>
+              <h4 style="color: black"><b>Droit du divorce</b></h4>
               <p>
-                Deals with Moveable-immoveable property ownership/possession & sale.
+              Dissolution d'un mariage légalement reconnu qui varie d'un pays à l'autre.
+              </p>
+            </div>
+          </div>
+          <div class="card" data-aos="zoom-in">
+            <img src="../assets/images/divorce.svg" alt="Avatar" style="width: 100px" />
+            <div class="container">
+              <h4 style="color: black"><b>Droit de la propriété</b></h4>
+              <p>
+              Traite de la propriété/possession et de la vente de biens meubles et immeubles.
               </p>
             </div>
           </div>
           <div class="card" data-aos="zoom-in">
             <img src="../assets/images/criminal.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
-              <h4 style="color: black"><b>Criminal Law</b></h4>
+              <h4 style="color: black"><b>Droit pénal</b></h4>
               <p>
-                State enforced rules and regulation controlling the conduct of its citizens.
+              L’État impose des règles et des réglementations contrôlant la conduite de ses citoyens.
               </p>
             </div>
           </div>
           <div class="card" data-aos="zoom-in">
             <img src="../assets/images/banking.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
-              <h4 style="color: black"><b>Banking Law</b></h4>
+              <h4 style="color: black"><b>Droit bancaire</b></h4>
               <p>
-                Administer over the banking business, with the aim to regulate transactions.
+              Administrer les activités bancaires, dans le but de réguler les transactions.
               </p>
             </div>
           </div>
           <div class="card" data-aos="zoom-in">
             <img src="../assets/images/chequebounce.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
-              <h4 style="color: black"><b>Cheque Bounce Law</b></h4>
+              <h4 style="color: black"><b>Droit de rebond</b></h4>
               <p>
-                Dishonour of cheques is quite common, it is covered under The Negotiable Instruments Act.
+              Le refus de chèques est assez courant et est couvert par la Loi sur les instruments négociables.
               </p>
             </div>
           </div>
           <div class="card" data-aos="zoom-in">
             <img src="../assets/images/trademark.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
-              <h4 style="color: black"><b>Trademark And Copyright Law</b></h4>
+              <h4 style="color: black"><b>Loi sur les marques et le droit d'auteur</b></h4>
               <p>
-                Serve the purpose to protect the rights of usage of an original idea, work, product, or brand.
+              Servir l’objectif de protéger les droits d’utilisation d’une idée, d’une œuvre, d’un produit ou d’une marque originale.
               </p>
             </div>
           </div>
@@ -165,19 +165,19 @@
             <img src="../assets/images/consumer.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
               <h4 style="color: black">
-                <b>Consumer Court Law</b>
+                <b>Loi sur le tribunal de la consommation</b>
               </h4>
               <p>
-                Guidelines and rules are made for the purpose of safeguarding the rights of the consumer.
+              Des lignes directrices et des règles sont élaborées dans le but de sauvegarder les droits du consommateur.
               </p>
             </div>
           </div>
           <div class="card" data-aos="zoom-in">
             <img src="../assets/images/trademark.svg" alt="Avatar" style="width: 100px" />
             <div class="container">
-              <h4 style="color: black"><b>Copyright Law</b></h4>
+              <h4 style="color: black"><b>Loi sur le droit d'auteur</b></h4>
               <p>
-                Serve the purpose to protect the rights of usage of an original idea, work, product, or brand.
+              Servir l’objectif de protéger les droits d’utilisation d’une idée, d’une œuvre, d’un produit ou d’une marque originale.
               </p>
             </div>
           </div>
@@ -187,13 +187,13 @@
 
 
         <div class="trial-button">
-          <a href="./appointment.html"><button>Meet our Lawyers</button></a>
+          <a href="./client/dashboard.html"><button>Rencontrez nos avocats</button></a>
         </div>
         <!-- BANNER 4 -->
         <div class="banner4" data-aos="zoom-out">
           <div>
             <h2>
-              Top-rated lawyers in India
+            Avocats les mieux notés en Maroc
             </h2>
           </div>
         </div>
