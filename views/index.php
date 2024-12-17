@@ -293,6 +293,7 @@
               Appointy grandit avec votre entreprise ! Lorsque vous développez votre entreprise
                 vers plusieurs emplacements, Appointy permet une gestion facile de tous
                 vos sites et clients à partir d'un portail d'administration centralisé
+                
               </p>
             </div>
           </div>
