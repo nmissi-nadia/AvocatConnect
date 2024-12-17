@@ -17,49 +17,44 @@
   <title>AvocatConnect</title>
 </head>
 
-<body>
-  <div class="App">
-    <!-- NavBar -->
+<body class="m-0 p-0">
+  <div class="h-auto m-auto">
+    
     <nav class="fixed top-0 w-full h-[70px] flex items-center justify-between bg-white shadow-md z-[100]">
-  <!-- Logo -->
-  <div class="flex items-center w-[150px] justify-between ml-[20px] md:ml-[40px]">
-    <a href="#" class="scale-[3] md:scale-[4]">
-      <img width="30" src="../assets/images/logo.png" alt="Logo du site" />
-    </a>
-  </div>
+      
+      <div class="flex items-center w-[150px] justify-between ml-[20px] md:ml-[40px]">
+        <a href="#" class="scale-[3] md:scale-[4]">
+          <img width="30" src="../assets/images/logo.png" alt="Logo du site" />
+        </a>
+      </div>
+      <div class="flex items-center">
+        <button class="block md:hidden text-2xl text-gray-700 mr-4" id="menu-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+      <div class="hidden md:flex justify-between items-center gap-6">
+        <a href="#" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          Accueil
+        </a>
+        <a href="./client/dashboard.php" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          Trouver un avocat
+        </a>
+        <a href="./dashboard.html" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          Mes réservations
+        </a>
+        <p class="flex items-center text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          <i class="fa-regular fa-user text-pink-500"></i>&nbsp;&nbsp;<span id="profile">Profile</span>
+        </p>
+      </div>
 
-  <!-- Menu responsive -->
-  <div class="flex items-center">
-    <!-- Icone de menu pour mobile -->
-    <button class="block md:hidden text-2xl text-gray-700 mr-4" id="menu-toggle">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- Liens de navigation -->
-  <div class="hidden md:flex justify-between items-center gap-6">
-    <a href="#" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
-      Accueil
-    </a>
-    <a href="./client/dashboard.php" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
-      Trouver un avocat
-    </a>
-    <a href="./dashboard.html" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
-      Mes réservations
-    </a>
-    <p class="flex items-center text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
-      <i class="fa-regular fa-user text-pink-500"></i>&nbsp;&nbsp;<span id="profile">Profile</span>
-    </p>
-  </div>
-
-  <!-- Espace et bouton de déconnexion -->
-  <div class="hidden md:flex items-center">
-    <a href="userlogin.php" class="text-[15px] font-medium text-white leading-[26px] py-[9px] px-[25px] bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md transition-all duration-200 ease-in-out hover:bg-gradient-to-r hover:from-[#EC008C] hover:to-[#fc6767]">
-      Connexion
-    </a>
-    <div class="w-[50px]"></div>
-  </div>
-</nav>
+      <!-- Espace et bouton de déconnexion -->
+      <div class="hidden md:flex items-center">
+        <a href="userlogin.php" class="text-[15px] font-medium text-white leading-[26px] py-[9px] px-[25px] bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md transition-all duration-200 ease-in-out hover:bg-gradient-to-r hover:from-[#EC008C] hover:to-[#fc6767]">
+          Connexion
+        </a>
+        <div class="w-[50px]"></div>
+      </div>
+  </nav>
 
 <!-- Menu responsive (caché par défaut) -->
 <div id="mobile-menu" class="hidden flex-col bg-white shadow-md absolute top-[70px] w-full p-4 md:hidden">
@@ -69,45 +64,46 @@
   <a href="userlogin.php" class="py-2 text-white bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full text-center">Connexion</a>
 </div>
 
+
     
     <!-- Navbar Ends -->
 
-    <main class="mybody">
+    <main class="mx-[0] my-[180px] pt-[70px] h-[4000px] w-4/5 m-auto">
       <!-- Body -->
-      <div class="banner" data-aos="fade-right">
-        <div class="banner-left">
-          <h1>
-          Un cabinet d'avocats
-          avec une passion pour le succès.
+      <div class="mt-[50px] w-full flex justify-around" data-aos="fade-right">
+        <div class="w-[45%]">
+          <h1 class="text-[#414a4d] text-[2.5vw] text-left mt-[60px] pt-[0] px-[24px] pb-[24px]">
+            Un cabinet d'avocats
+            avec une passion pour le succès.
           </h1>
-          <!-- <h1>Reputation,Respect & Result</h1> -->
-          <p>
-            <img class="hammersec3" src="../assets/images/hammer (2).png" alt="xc" />
+          
+          <p class="px-[24px] py-[0] text-[2vw] text-[#414a4d] block">
+            <img class="w-[30px] mr-[4px]" src="../assets/images/hammer (2).png" alt="xc" />
             Les avocats les plus réputés pour vous
           </p>
-          <div class="sec3para">
-          Le droit et la justice sont des éléments très importants de toute société. Que ce soit
-            développé ou en développement, chaque pays a besoin de justice,
-            l'équité et la primauté du droit. Une grande partie de cette institution est
-            Des avocats qui contribuent à rendre justice aux citoyens.
+          <div class="text-[#707070] ml-[35px] text-[1vw]">
+            Le droit et la justice sont des éléments très importants de toute société. Que ce soit
+              développé ou en développement, chaque pays a besoin de justice,
+              l'équité et la primauté du droit. Une grande partie de cette institution est
+              Des avocats qui contribuent à rendre justice aux citoyens.
           </div>
-          <p>
-            <img class="hammersec3" src="../assets/images/hammer (2).png" alt="xc" />
+          <p class="px-[24px] py-[0] text-[2vw] text-[#414a4d] block">
+            <img class="w-[30px] mr-[4px]" src="../assets/images/hammer (2).png" alt="xc" />
             Nous défendrons votre justice et vos droits
           </p>
-          <div class="sec3para">
-          La justice signifie laisser les gens tranquilles, pour les autres, cela signifie être moralement correct. Encore plus de gens pensent à la justice
-          découle de l’accord de la plupart des gens, tandis que d’autres pensent que la justice est une répartition équitable des ressources.
+          <div class="text-[#707070] ml-[35px] text-[1vw]">
+              La justice signifie laisser les gens tranquilles, pour les autres, cela signifie être moralement correct. Encore plus de gens pensent à la justice
+              découle de l’accord de la plupart des gens, tandis que d’autres pensent que la justice est une répartition équitable des ressources.
           </div>
       
 
 
-          <div class="btn">
+          <div class="mt-[50px]">
             <button class="start-now">Commencez maintenant !</button>
           </div>
         </div>
-        <div class="banner-right" data-aos="flip-left" data-aos-duration="1500">
-          <img width="100%" height="100%" src="../assets/Images/ladki.png" alt="Women Lawyer" />
+        <div class="w-[50%] h-[100%]" data-aos="flip-left" data-aos-duration="1500">
+          <img class="w-[100%]" height="100%" src="../assets/Images/ladki.png" alt="Women Lawyer" />
         </div>
       </div>
       <!--  -->
