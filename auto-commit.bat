@@ -8,7 +8,7 @@ cd /d "C:\laragon\www\AvocatConnect"
 git add .
 
 :: Commit avec un message automatique
-git commit -m "Modification de coté responsive du page index"
+git commit -m "Page index terminer"
 
 :: Pousser les modifications sur la branche principale (main ou master)
 git push origin main
