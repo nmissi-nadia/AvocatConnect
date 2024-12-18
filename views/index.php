@@ -293,7 +293,7 @@
               Appointy grandit avec votre entreprise ! Lorsque vous développez votre entreprise
                 vers plusieurs emplacements, Appointy permet une gestion facile de tous
                 vos sites et clients à partir d'un portail d'administration centralisé
-                
+
               </p>
             </div>
           </div>
@@ -317,7 +317,7 @@
               <img class="items-center p-[15px]" src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Security.svg"
                 alt="" />
             </div>
-            <div class="w-3/4 bg-[#ffffff]">
+            <!-- <div class="w-3/4 bg-[#ffffff]"> -->
               <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Sécurité</h4>
               <p class="text-[#707070] text-[16px] font-['Nunito']">
               Nous prenons la sécurité des données des clients très au sérieux. Vos données sont
@@ -325,7 +325,7 @@
                 Notre application est hébergée sur Google Cloud qui adhère aux
                 normes les plus élevées de fiabilité et de sécurité des données
               </p>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
         
@@ -333,7 +333,7 @@
       </div>
     </main>
     <!-- Footer -->
-    <footer class="bg-[#ffffff] px-[0] py-[70px]">
+    <footer class="bg-[#ffffff] px-[0] mx-auto py-[70px]">
           <div class="w-full m-auto">
             <div class="flex flex-wrap">
               <div class="w-1/5 px-[20px] py-[0]">
