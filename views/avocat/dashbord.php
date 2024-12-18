@@ -237,7 +237,7 @@
 
 <script src="../../assets/js/script.js"></script>
 <script src="../../assetsjs/data/apointment.js"></script>
-    <script src="../../assets/js/data/avocats.js"></script>
+    <script src="../../assets/js/data/avocatt.js"></script>
     <script src="../../assets/js/utils/date-formatter.js"></script>
     <script src="../../assets/js/avocat.js"></script>
    

@@ -140,3 +140,131 @@ document.getElementById('appointmentForm').addEventListener('submit', (e) => {
     
     document.getElementById('appointmentModal').classList.add('hidden');
 });
+
+
+
+// rendez vous 
+// Current client ID (simulated authentication)
+const currentClientId = 1;
+
+function createAppointmentCard(appointment) {
+    const formattedDateTime = dateFormatter.formatDateTime(appointment.date, appointment.time);
+    const isUpcoming = dateFormatter.isUpcoming(appointment.date);
+
+    return `
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="font-semibold text-lg">${appointment.lawyerName}</h3>
+                    <p class="text-gray-600">${formattedDateTime}</p>
+                    <p class="text-gray-600">Type: ${appointment.type}</p>
+                    <p class="mt-2">
+                        <span class="px-3 py-1 rounded-full text-sm ${getStatusStyle(appointment.status)}">
+                            ${getStatusText(appointment.status)}
+                        </span>
+                    </p>
+                </div>
+                ${isUpcoming && appointment.status !== 'cancelled' ? `
+                    <div class="space-x-2">
+                        <button onclick="openEditModal(${appointment.id})" 
+                                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                            Modifier
+                        </button>
+                        <button onclick="cancelAppointment(${appointment.id})"
+                                class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+                            Annuler
+                        </button>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+}
+
+function getStatusStyle(status) {
+    const styles = {
+        pending: 'bg-yellow-100 text-yellow-800',
+        confirmed: 'bg-green-100 text-green-800',
+        cancelled: 'bg-red-100 text-red-800',
+        completed: 'bg-gray-100 text-gray-800'
+    };
+    return styles[status] || '';
+}
+
+function getStatusText(status) {
+    const texts = {
+        pending: 'En attente',
+        confirmed: 'Confirmé',
+        cancelled: 'Annulé',
+        completed: 'Terminé'
+    };
+    return texts[status] || status;
+}
+
+function openEditModal(appointmentId) {
+    const appointment = appointments.find(apt => apt.id === appointmentId);
+    if (appointment) {
+        document.getElementById('editAppointmentId').value = appointmentId;
+        document.getElementById('editDate').value = appointment.date;
+        document.getElementById('editTime').value = appointment.time;
+        document.getElementById('editModal').classList.remove('hidden');
+    }
+}
+
+function closeEditModal() {
+    document.getElementById('editModal').classList.add('hidden');
+}
+
+function cancelAppointment(appointmentId) {
+    if (confirm('Êtes-vous sûr de vouloir annuler ce rendez-vous ?')) {
+        // Simulate API call to cancel appointment
+        const appointmentIndex = appointments.findIndex(apt => apt.id === appointmentId);
+        if (appointmentIndex !== -1) {
+            appointments[appointmentIndex].status = 'cancelled';
+            updateDashboard();
+        }
+    }
+}
+
+function updateDashboard() {
+    const clientAppointments = appointments.filter(apt => apt.clientId === currentClientId);
+    
+    // Split appointments into upcoming and past
+    const today = new Date();
+    const upcomingAppointments = clientAppointments.filter(apt => dateFormatter.isUpcoming(apt.date));
+    const pastAppointments = clientAppointments.filter(apt => !dateFormatter.isUpcoming(apt.date));
+
+    // Update upcoming appointments
+    document.getElementById('upcomingAppointments').innerHTML = upcomingAppointments.length > 0
+        ? upcomingAppointments.map(createAppointmentCard).join('')
+        : '<p class="text-gray-500">Aucun rendez-vous à venir</p>';
+
+    // Update past appointments
+    document.getElementById('pastAppointments').innerHTML = pastAppointments.length > 0
+        ? pastAppointments.map(createAppointmentCard).join('')
+        : '<p class="text-gray-500">Aucun rendez-vous passé</p>';
+}
+
+// Handle edit form submission
+document.getElementById('editForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const appointmentId = parseInt(document.getElementById('editAppointmentId').value);
+    const newDate = document.getElementById('editDate').value;
+    const newTime = document.getElementById('editTime').value;
+
+    // Simulate API call to update appointment
+    const appointmentIndex = appointments.findIndex(apt => apt.id === appointmentId);
+    if (appointmentIndex !== -1) {
+        appointments[appointmentIndex].date = newDate;
+        appointments[appointmentIndex].time = newTime;
+        closeEditModal();
+        updateDashboard();
+    }
+});
+
+// Initialize dashboard
+document.addEventListener('DOMContentLoaded', () => {
+    const currentClient = { id: 1, name: "Jean Dupont" }; // Simulated client data
+    document.getElementById('clientName').textContent = currentClient.name;
+    updateDashboard();
+});

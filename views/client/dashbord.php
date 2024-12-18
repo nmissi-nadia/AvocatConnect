@@ -167,6 +167,55 @@
                      </div>
             </div>
 
+
+                  <div class="max-w-7xl mx-auto px-4 py-8">
+                        <div class="mb-8">
+                              <h2 class="text-2xl font-semibold mb-4">Rendez-vous à venir</h2>
+                              <div id="upcomingAppointments" class="grid gap-4">
+                                 <!-- Upcoming appointments will be inserted here -->
+                              </div>
+                        </div>
+
+                        <div>
+                              <h2 class="text-2xl font-semibold mb-4">Historique des rendez-vous</h2>
+                              <div id="pastAppointments" class="grid gap-4">
+                                 <!-- Past appointments will be inserted here -->
+                              </div>
+                        </div>
+                  </div>
+
+               <!-- Modal de modification -->
+            <div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden">
+               <div class="bg-white rounded-lg max-w-md w-full p-6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                     <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold">Modifier le rendez-vous</h3>
+                        <button onclick="closeEditModal()" class="text-gray-500 hover:text-gray-700">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                           </svg>
+                        </button>
+                     </div>
+                     <form id="editForm" class="space-y-4">
+                        <input type="hidden" id="editAppointmentId">
+                        <div>
+                           <label class="block text-sm font-medium text-gray-700">Date</label>
+                           <input type="date" id="editDate" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                           <label class="block text-sm font-medium text-gray-700">Heure</label>
+                           <input type="time" id="editTime" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="flex justify-end space-x-3">
+                           <button type="button" onclick="closeEditModal()" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                                 Annuler
+                           </button>
+                           <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                                 Sauvegarder
+                           </button>
+                        </div>
+                     </form>
+               </div>
+            </div>
             <!-- Upcoming Appointments -->
             <div class="mt-8">
                 <h2 class="text-lg font-medium text-gray-900 mb-4">Mes Prochains Rendez-vous</h2>
@@ -196,5 +245,8 @@
 
 <script src="../../assets/js/script.js"></script>
 <script src="../../assets/js/client.js"></script>
+<script src="../../assetsjs/data/apointment.js"></script>
+    <script src="../../assets/js/data/avocatt.js"></script>
+    <script src="../../assets/js/utils/date-formatter.js"></script>
 </body>
 </html>
