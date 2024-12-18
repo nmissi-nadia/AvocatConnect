@@ -22,7 +22,6 @@
   <div class="h-auto mt-20 justify-center">
     
     <nav class="fixed top-0 w-full h-[70px] flex items-center justify-between bg-white shadow-md z-[100]">
-      
       <div class="flex items-center w-[150px] justify-between ml-[20px] md:ml-[40px]">
         <a href="#" class="scale-[3] md:scale-[4]">
           <img class="w-10 ml-10" src="../assets/images/logo.png" alt="Logo du site" />
@@ -33,7 +32,7 @@
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
-      <div class="hidden md:flex justify-between items-center gap-6">
+      <div id="navbar-links" class="hidden md:flex justify-between items-center gap-6">
         <a href="#" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
           Accueil
         </a>
@@ -47,7 +46,7 @@
           <i class="fa-regular fa-user text-pink-500"></i>&nbsp;&nbsp;<span id="profile">Profile</span>
         </p>
       </div>
-
+    
       <!-- Espace et bouton de déconnexion -->
       <div class="hidden md:flex items-center">
         <a href="userlogin.php" class="text-[15px] font-medium text-white leading-[26px] py-[9px] px-[25px] bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md transition-all duration-200 ease-in-out hover:bg-gradient-to-r hover:from-[#EC008C] hover:to-[#fc6767]">
@@ -55,18 +54,16 @@
         </a>
         <div class="w-[50px]"></div>
       </div>
-  </nav>
-
-<!-- Menu responsive (caché par défaut) -->
-<div id="mobile-menu" class="hidden flex-col bg-white shadow-md absolute top-[70px] w-full p-4 md:hidden">
-  <a href="#" class="py-2 text-gray-600 hover:text-pink-300">Accueil</a>
-  <a href="./client/dashboard.php" class="py-2 text-gray-600 hover:text-pink-300">Trouver un avocat</a>
-  <a href="./dashboard.html" class="py-2 text-gray-600 hover:text-pink-300">Mes réservations</a>
-  <a href="userlogin.php" class="py-2 text-white bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full text-center">Connexion</a>
-</div>
-
-
+    </nav>
     
+    
+    <div id="mobile-menu" class="hidden flex-col bg-white shadow-md absolute top-[70px] w-full p-4 md:hidden">
+      <a href="#" class="py-2 text-gray-600 hover:text-pink-300">Accueil</a>
+      <a href="./client/dashboard.php" class="py-2 text-gray-600 hover:text-pink-300">Trouver un avocat</a>
+      <a href="./dashboard.html" class="py-2 text-gray-600 hover:text-pink-300">Mes réservations</a>
+      <a href="userlogin.php" class="py-2 text-white bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full text-center">Connexion</a>
+    </div>
+      
     <!-- Navbar Ends -->
 
     <main class="mx-auto mt-[180px]  h-auto w-4/5 m-auto">
@@ -378,6 +375,7 @@
           </div>
         </footer>
 </body>
+<script src="../assets/js/script.js"></script>
 <script src="https://kit.fontawesome.com/422003c0e3.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
