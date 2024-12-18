@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>LAW CONNECT</title>
+    <title>AVOCATCONNECT</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/userlogin.css">
@@ -15,7 +15,7 @@
         <div class="form-container sign-up-container">
 
             <form action="" id="form1">
-                <h1>Create Account</h1>
+                <h1>Créer un compte</h1>
                 <div class="social-container">
 
                 </div>
@@ -28,25 +28,25 @@
                 <input type="age" name="age" placeholder="Age" id="age" required>
 
 
-                <button id="button1">Submit</button>
+                <button id="button1">Inscrire</button>
 
                 <!-- <input type="submit" value="Submit" id="button1"> -->
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form action="" id="form2">
-                <h1 id="head">Sign In</h1>
+                <h1 id="head">Se connecter</h1>
 
                 <span>Use your account</span>
                 <input type="email" name="email" placeholder="Email" id="email-log" required>
-                <input type="password" name="password" placeholder="Password" id="password-log" required>
+                <input type="password" name="password" placeholder="Mot de passe" id="password-log" required>
                 <select style="background-color: #ffffff;    width: 60px;" id="role">
-                    <option value="user">User</option>
-                    <option value="lawer">Lawyer</option>
+                    <option value="user">Client</option>
+                    <option value="lawer">Avocat</option>
 
                 </select>
 
-                <button id="button2">Submit</button>
+                <button id="button2">Connecter</button>
                 <!-- <input type="submit" value="Submit" id="button2"> -->
 
             </form>
@@ -67,17 +67,8 @@
                     <p>Enter your details and start booking with us</p>
                     <button class="ghost" id="signUp">Sign Up</button>
 
-                    <a href="avocat/lawyerReg.php">
-                        <h3 style="border-radius: 20px;
-                    border: 1px solid #20a87e;
-                    background-color: #20a87e;
-                    color: #FFFFFF;
-                    font-size: 12px;
-                    font-weight: bold;
-                    padding: 12px 45px;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                    transition: transform 80ms ease-in;" h>Lawyer Signup</h3>
+                    <a href="avocat/avocatreg.php">
+                        <h3 class="rounded-[20px] border-[1px] border-[solid] border-[#20a87e] bg-[#20a87e] text-[#FFFFFF] text-[12px] font-bold px-[45px] py-[12px] tracking-[1px] uppercase [transition:transform_80ms_ease-in]" h>Inscription d'un avocat</h3>
                     </a>
                 </div>
             </div>

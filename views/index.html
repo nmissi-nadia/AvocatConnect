@@ -13,6 +13,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="icon" type="image/x-icon" href="../assets/images/justice.png" />
+  <style>
+   .test{
+    position: relative;
+    left:230px;
+    top:30px;
+   } 
+  </style>
  
   <title>AvocatConnect</title>
 </head>
@@ -24,7 +31,7 @@
       
       <div class="flex items-center w-[150px] justify-between ml-[20px] md:ml-[40px]">
         <a href="#" class="scale-[3] md:scale-[4]">
-          <img width="30" src="../assets/images/logo.png" alt="Logo du site" />
+          <img class="w-10 ml-10" src="../assets/images/logo.png" alt="Logo du site" />
         </a>
       </div>
       <div class="flex items-center">
@@ -116,7 +123,7 @@
 
 
         <!-- Grid cards -->
-        <div class="grid md:scale[0.5] pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-px mb-[50px] bg-[#f2f5fa] grid-cols-[repeat(3,_1fr)]">
+        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-px mb-[50px] bg-[#f2f5fa] sm:grid-cols-[repeat(1,_1fr)] md:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(3,_1fr)]">
           <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]
 " data-aos="zoom-in">
             <img class="w-[100px] rounded-[10px] pl-[10px]" src="../assets/images/civil.svg" alt="Avatar"  />
@@ -221,7 +228,7 @@
             </h2>
           </div>
         </div>
-        <div class="grid md:scale[0.5] pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] bg-[#f2f5fa] grid-cols-[repeat(4,_1fr)]" data-aos="zoom-out">
+        <div class="grid  pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] bg-[#f2f5fa] grid-cols-[repeat(2,_1fr)] sm:grid-cols-[repeat(1,_1fr)] md:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(4,_1fr)]" data-aos="zoom-out">
           <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]">
             <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/Layyer2.jpeg" alt="Avatar" />
             <div class="px-[16px] py-[2px]">
@@ -254,12 +261,12 @@
           </div>
           <div class="[transition:0.3s] bg-[#f2f5fa] text-[#707070] px-[0] py-[10px] rounded-[15px] hover:[box-shadow:0_8px_16px_0_rgba(0,0,0,0.2)]">
             <img class="w-[90%] rounded-[10px] pl-[10px]" src="../assets/images/lawyer5.jpeg" alt="Avatar" width="90%" />
-            <div class="px-[16px] py-[2px]">
+            <!-- <div class="px-[16px] py-[2px]"> -->
               <h4 class="text-[#414a4d] text-[18px] font-['Nunito'] color-black"><b>Mukul Rohtagi</b></h4>
               <p class=" text-[1rem] font-['Nunito']">
                 Mukul Rohtagi was appointed as a chief legal advisor for the current Prime Minister of India,
               </p>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
         <div class="banner4">
@@ -267,27 +274,27 @@
             <h2 class="text-center text-[2.5vw] pt-[0] px-[0] pb-[80px] text-[#414a4d] font-['Nunito']">Votre tranquillité d'esprit est notre priorité absolue!</h2>
           </div>
         </div>
-        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] grid-cols-[repeat(2,_1fr)]">
-          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-right">
-            <div class="bg-[#ffffff]">
+        <div class="grid pt-[15px] gap-x-[125px] gap-y-[50px] m-auto mt-[10px] grid-cols-[repeat(1,_1fr)] md:grid-cols-[repeat(2,_1fr)]">
+          <div class="flex flex-col justify-center w-full bg-[whitesmoke] h-auto [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-right">
+            <div class="bg-[#ffffff] w-20 justify-self-center rounded-lg">
               <img class="items-center p-[15px]" src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Super-Support.svg"
-                alt="" />
+                alt=" super support" />
             </div>
-            <div class="w-3/4 bg-[#ffffff]">
+            <!-- <div class="w-3/4 bg-[#ffffff]"> -->
               <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Soutien au souper</h4>
               <p class="text-[#707070] text-[16px] font-['Nunito']">
               Appointy est soutenu par une équipe de professionnels dévoués qui
               sont toujours disponibles par e-mail, chat et téléphone
               </p>
-            </div>
+            <!-- </div> -->
           </div>
-          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-left">
-            <div class="bg-[#ffffff]">
+          <div class="flex flex-col justify-center w-full bg-[whitesmoke] h-auto [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-left">
+            <div class="bg-[#ffffff] w-20 justify-self-center rounded-lg">
               <img class="items-center p-[15px]"
                 src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Multi-location-management.svg"
                 alt="" />
             </div>
-            <div class="w-3/4 bg-[#ffffff]">
+            <!-- <div class="w-3/4 bg-[#ffffff]"> -->
               <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Gestion des multi-emplacements</h4>
               <p class="text-[#707070] text-[16px] font-['Nunito']">
               Appointy grandit avec votre entreprise ! Lorsque vous développez votre entreprise
@@ -295,14 +302,14 @@
                 vos sites et clients à partir d'un portail d'administration centralisé
 
               </p>
-            </div>
+            <!-- </div> -->
           </div>
-          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-right">
-            <div class="bg-[#ffffff]">
+          <div class="flex flex-col justify-center w-full bg-[whitesmoke] h-auto [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-right">
+            <div class="bg-[#ffffff] w-20 justify-self-center rounded-lg">
               <img class="items-center p-[15px]" src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Frame-14.svg"
                 alt="" />
             </div>
-            <div class="w-3/4 bg-[#ffffff]">
+            
               <h4 class="text-[#414a4d] text-[18px] font-['Nunito']">Assistance à l'installation gratuite et migration facile</h4>
               <p class="text-[#707070] text-[16px] font-['Nunito']">
               Intégration facile et assistance à la configuration personnalisée gratuite de
@@ -310,11 +317,11 @@
                 a commencé avec Appointy en un rien de temps. Besoin de passer de votre
                 système existant ? Nous nous occupons de tout !
               </p>
-            </div>
+            
           </div>
-          <div class="flex flex-wrap w-full bg-[whitesmoke] h-56 [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-left">
-            <div class="bg-[#ffffff]">
-              <img class="items-center p-[15px]" src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Security.svg"
+          <div class="flex flex-col justify-center w-full bg-[whitesmoke] h-auto [box-shadow:0_1px_3px_0_rgba(0,0,0,.1),0_1px_2px_0_rgba(0,0,0,.06)!important] rounded-[10px] border-[whitesmoke] m-[20px]" data-aos="fade-left">
+            <div class="bg-[#ffffff] w-20 justify-self-center rounded-lg">
+              <img class="items-center p-[15px]   " src="https://www.appointy.com/online-booking-software/wp-content/uploads//2020/10/Security.svg"
                 alt="" />
             </div>
             <!-- <div class="w-3/4 bg-[#ffffff]"> -->
@@ -333,8 +340,8 @@
       </div>
     </main>
     <!-- Footer -->
-    <footer class="bg-[#ffffff] px-[0] mx-auto py-[70px]">
-          <div class="w-full m-auto">
+    <footer class="test" >
+          <div class="w-full m-auto lg:grid-cols-[repeat(4,_1fr)] md:grid-cols-[repeat(2,_1fr)] sm:grid-cols-[repeat(1,_1fr)]">
             <div class="flex flex-wrap">
               <div class="w-1/5 px-[20px] py-[0]">
                 <h4 class="text-[18px] text-[black] capitalize mb-[35px] font-medium relative before:content-[''] before:absolute before:left-[0] before:-bottom-[10px] before:bg-[#e91e63] before:h-[2px] before:box-border before:w-[50px]">Entreprise</h4>
@@ -355,7 +362,7 @@
                   <li><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Centre d'assistance</a></li>
                 </ul>
               </div>
-              <div class="w-1/5 px-[20px] py-[0]">
+              <div class="w-1/5 px-[20px] py-[0] sm:hidden md:block">
                 <h4 class="text-[18px] text-[black] capitalize mb-[35px] font-medium relative before:content-[''] before:absolute before:left-[0] before:-bottom-[10px] before:bg-[#e91e63] before:h-[2px] before:box-border before:w-[50px]">Ventes</h4>
                 <ul>
                   <li class="mb-[10px]"><a class="text-[16px] capitalize -ml-[30px] no-underline font-light text-[black] block [transition:all_0.3s_ease] hover:text-[black] hover:pl-[8px]" href="#">Contacter le service commercial</a></li>

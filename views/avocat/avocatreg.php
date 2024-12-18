@@ -45,7 +45,7 @@
         </div>
     </div>
     <div id="conditions">
-        <p> Conditions of Use Privacy Notice Help <br>© 1996-2023, Lwayer Connect.com, Inc. or its affiliates</p>
+        <p> Conditions of Use Privacy Notice Help <br>© 2024-2030, Inc. </p>
     </div>
 </body>
 
