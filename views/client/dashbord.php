@@ -89,7 +89,7 @@
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <!-- Quick Actions -->
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <button class="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <button onclick="" class="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -97,7 +97,74 @@
                     <p class="mt-2 text-sm text-gray-500">Réserver une consultation</p>
                 </button>
 
-                <!-- More quick actions... -->
+                     <div class="max-w-4xl mx-auto p-6">
+                           <div id="calendar" class="bg-white rounded-lg shadow-lg p-6">
+                                 <div class="flex items-center justify-between mb-6">
+                                    <button id="prevMonth" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                                    </button>
+                                    <h2 id="currentMonth" class="text-2xl font-semibold"></h2>
+                                    <button id="nextMonth" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                                    </button>
+                                 </div>
+
+                                 <div class="grid grid-cols-7 gap-2 mb-4">
+                                    <div class="text-center font-semibold text-gray-600 py-2">Dim</div>
+                                    <div class="text-center font-semibold text-gray-600 py-2">Lun</div>
+                                    <div class="text-center font-semibold text-gray-600 py-2">Mar</div>
+                                    <div class="text-center font-semibold text-gray-600 py-2">Mer</div>
+                                    <div class="text-center font-semibold text-gray-600 py-2">Jeu</div>
+                                    <div class="text-center font-semibold text-gray-600 py-2">Ven</div>
+                                    <div class="text-center font-semibold text-gray-600 py-2">Sam</div>
+                                 </div>
+
+                                 <div id="calendarDays" class="grid grid-cols-7 gap-2"></div>
+                           </div>
+                     </div>
+
+                     <!-- Modal -->
+                     <div id="appointmentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden">
+                        <div class="bg-white rounded-lg max-w-md w-full p-6">
+                              <div class="flex justify-between items-center mb-6">
+                                 <h3 id="modalDate" class="text-xl font-semibold"></h3>
+                                 <button id="closeModal" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                                 </button>
+                              </div>
+
+                              <form id="appointmentForm">
+                                 <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                          Type de jugement
+                                    </label>
+                                    <select id="judgmentType" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
+                                          <option value="">Sélectionnez un type</option>
+                                          <option value="Civil">Civil</option>
+                                          <option value="Criminal">Pénal</option>
+                                          <option value="Family">Famille</option>
+                                          <option value="Commercial">Commercial</option>
+                                          <option value="Administrative">Administratif</option>
+                                    </select>
+                                 </div>
+
+                                 <div class="mb-6">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                          Avocat
+                                    </label>
+                                    <select id="lawyer" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required disabled>
+                                          <option value="">Sélectionnez d'abord un type de jugement</option>
+                                    </select>
+                                 </div>
+
+                                 <div class="flex justify-end">
+                                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                                          Confirmer le rendez-vous
+                                    </button>
+                                 </div>
+                              </form>
+                        </div>
+                     </div>
             </div>
 
             <!-- Upcoming Appointments -->
@@ -128,5 +195,6 @@
 </div>
 
 <script src="../../assets/js/script.js"></script>
+<script src="../../assets/js/client.js"></script>
 </body>
 </html>
