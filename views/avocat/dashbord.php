@@ -96,30 +96,103 @@
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <!-- Stats Grid -->
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="bg-white overflow-hidden shadow rounded-lg">
-                    <div class="p-5">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0">
-                                <svg class="h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                <div id="stats" class="flex flex-row flex-wrap">
+                    <div class="w-full max-w-full flex-shrink px-4">
+                        <p class="mb-5 mt-3 text-xl font-bold">Statistique</p>
+                    </div>
+                    <div class="mb-10 w-full max-w-full flex-shrink px-8 sm:w-1/2 lg:w-1/4">
+                        <div class="h-full rounded-xl bg-white shadow-2xl">
+                        <div x-data="{ tooltips: false }" class="relative px-6 pt-6 text-sm font-semibold">
+                            Total Client
+                            <div x-on:mouseover="tooltips = true" x-on:mouseleave="tooltips = false" class="text-green-500 ltr:float-right rtl:float-left">
+                            +12%
+                            <div class="absolute bottom-full top-auto mb-3" x-show.transition.origin.top="tooltips" style="display: none;">
+                                <div class="z-40 -mb-1 w-32 rounded-lg bg-black p-2 text-center text-sm leading-tight text-white shadow-lg">Since last month</div>
+                                <div class="absolute bottom-0 -mb-2 w-1 -rotate-45 transform bg-black p-1 ltr:ml-6 rtl:mr-6"></div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-row justify-between px-6 py-4">
+                            <div class="relative h-14 w-14 self-center rounded-full bg-rose-500 text-center text-pink-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 transform" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
                                 </svg>
                             </div>
-                            <div class="ml-5 w-0 flex-1">
-                                <dl>
-                                    <dt class="text-sm font-medium text-gray-500 truncate">Clients Actifs</dt>
-                                    <dd class="text-lg font-semibold text-gray-900">24</dd>
-                                </dl>
+                            <h2 class="self-center text-3xl font-bold">421</h2>
+                        </div>
+                        <div class="px-6 pb-6">
+                            <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="mb-10 w-full max-w-full flex-shrink px-8 sm:w-1/2 lg:w-1/4">
+                        <div class="h-full rounded-xl bg-white shadow-2xl">
+                        <div x-data="{ tooltips: false }" class="relative px-6 pt-6 text-sm font-semibold">
+                        Nombre de demandes en attente.
+                            <div x-on:mouseover="tooltips = true" x-on:mouseleave="tooltips = false" class="text-green-500 ltr:float-right rtl:float-left">
+                            +15%
+                            <div class="absolute bottom-full top-auto mb-3" x-show.transition.origin.top="tooltips" style="display: none;">
+                                <div class="z-40 -mb-1 w-32 rounded-lg bg-black p-2 text-center text-sm leading-tight text-white shadow-lg">Since last month</div>
+                                <div class="absolute bottom-0 -mb-2 w-1 -rotate-45 transform bg-black p-1 ltr:ml-6 rtl:mr-6"></div>
                             </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-row justify-between px-6 py-4">
+                            <div class="relative h-14 w-14 self-center rounded-full bg-yellow-500 text-center text-yellow-50">
+                            <img src="../../assets/images/consultation.svg" alt="">
+                            </div>
+                            <h2 class="self-center text-3xl font-bold"><span>$</span>31K</h2>
+                        </div>
+                        <div class="px-6 pb-6">
+                            <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="mb-10 w-full max-w-full flex-shrink px-8 sm:w-1/2 lg:w-1/4">
+                        <div class="h-full rounded-xl bg-white shadow-2xl">
+                        <div x-data="{ tooltips: false }" class="relative px-6 pt-6 text-sm font-semibold">
+                        Nombre de demandes approuvées pour la journée.
+                            <div x-on:mouseover="tooltips = true" x-on:mouseleave="tooltips = false" class="text-pink-500 ltr:float-right rtl:float-left">
+                            -5%
+                            <div class="absolute bottom-full top-auto mb-3" x-show.transition.origin.top="tooltips" style="display: none;">
+                                <div class="z-40 -mb-1 w-32 rounded-lg bg-black p-2 text-center text-sm leading-tight text-white shadow-lg">Since last month</div>
+                                <div class="absolute bottom-0 -mb-2 w-1 -rotate-45 transform bg-black p-1 ltr:ml-6 rtl:mr-6"></div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-row justify-between px-6 py-4">
+                            <div class="relative h-14 w-14 self-center rounded-full bg-green-500 text-center text-green-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 transform" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                </svg>
+                            </div>
+                            <h2 class="self-center text-3xl font-bold">1.2K</h2>
+                        </div>
+                        <div class="px-6 pb-6">
+                            <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="mb-10 w-full max-w-full flex-shrink px-8 sm:w-1/2 lg:w-1/4">
+                        <div class="h-full rounded-xl bg-white shadow-2xl">
+                        <div x-data="{ tooltips: false }" class="relative px-6 pt-6 text-sm font-semibold">Nombre de demandes approuvées pour le jour suivant.<span class="mt-1 h-2 w-2 animate-pulse rounded-full bg-green-500 ltr:float-right rtl:float-left"></span></div>
+                        <div class="flex flex-row justify-between px-6 py-4">
+                            <div class="relative h-14 w-14 self-center rounded-full bg-indigo-500 text-center text-indigo-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-people absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 transform" viewBox="0 0 16 16">
+                                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+                            </svg>
+                            </div>
+                            <h2 class="self-center text-3xl font-bold">602</h2>
+                        </div>
+                        <div class="px-6 pb-6">
+                            <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
+                        </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- More stat cards... -->
-            </div>
-
-            <!-- Upcoming Appointments -->
-            <div class="mt-8">
+            <!-- Détails du prochain client et de sa réservation. -->
+            <div id="detail"  class="mt-8">
                 <h2 class="text-lg font-medium text-gray-900">Rendez-vous à venir</h2>
                 <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-lg">
                     <ul class="divide-y divide-gray-200">
@@ -145,6 +218,7 @@
         </main>
     </div>
 </div>
+
 <script src="../../assets/js/script.js"></script>
    
 </body>
