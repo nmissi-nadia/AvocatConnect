@@ -12,23 +12,10 @@ body {
     font-family: 'Montserrat', sans-serif;
     height: 100vh;
     margin: 0;
-    background-image: url('https://fthmb.tqn.com/vMHG2Hi44XBqddh93WTo3nkWESU=/5000x3000/filters:fill(auto,1)/low-poly-background-672623312-5a5a8563e258f800370a105a.jpg');
+    background-image: url('../images/login.jpg');
     background-size: cover;
 	background-repeat: no-repeat;
 }
-/* body {
-	
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 95vh;
-	margin: -20px 0 50px;
-    background-image: url('https://m.media-amazon.com/images/I/81TvpIOUMTL._AC_UF1000,1000_QL80_.jpg');
-			background-size: cover;
-			
-} */
 
 h1 {
 	font-weight: bold;
@@ -266,7 +253,7 @@ input {
 		font-family: 'Montserrat', sans-serif;
 		height: 100vh;
 		margin: 0;
-		background-image: url('https://m.media-amazon.com/images/I/81TvpIOUMTL._AC_UF1000,1000_QL80_.jpg');
+		background-image: url('../images/login.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
 		background: none;

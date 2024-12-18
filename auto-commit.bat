@@ -8,7 +8,7 @@ cd /d "C:\laragon\www\AvocatConnect"
 git add .
 
 :: Commit avec un message automatique
-git commit -m "suppression des fichiers indesirable"
+git commit -m "changement de background du page login"
 
 :: Pousser les modifications sur la branche principale (main ou master)
 git push origin main
