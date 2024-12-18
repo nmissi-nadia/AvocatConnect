@@ -8,7 +8,7 @@ cd /d "C:\laragon\www\AvocatConnect"
 git add .
 
 :: Commit avec un message automatique
-git commit -m "Ajout de page 404"
+git commit -m "suppression des fichiers indesirable"
 
 :: Pousser les modifications sur la branche principale (main ou master)
 git push origin main
