@@ -20,9 +20,7 @@ container.style.backgroundSize = "cover";
 container.style.position = "relative";
 //////////////////////////////////////////////
 let baseurl = "https://law-connect.onrender.com";
-//let signup_btn= document.querySelector("#signup form");
 
-//signup_btn.addEventListener("submit", signupFun)
 const signup_btn = document.getElementById("button1")
 signup_btn.addEventListener("click", (e) => {
   e.preventDefault()

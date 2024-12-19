@@ -14,7 +14,6 @@
             <h2 style="margin-bottom: -20px;">Créer un compte</h2>
             <h4 style="margin-bottom: 20px;">Ici pour les Avocat</h4>
             <form>
-                <!-- <label for="Your name">Your name</label><br> -->
                 <input type="text" id="name" class="input" placeholder="Entrez votre Nom"><br>
                 <input type="text" id="prenom" class="input" placeholder="Entrez votre Prénom"><br>
                 <!-- <label for="Email">Email</label><br> -->
@@ -25,18 +24,20 @@
                 <input type="text" id="bio" class="input" placeholder="Entrez votre Biography"><br>
                 <!-- <label for="Email">Email</label><br> -->
 
-                <!-- <label for="Password">Password</label><br> -->
-                <input type="text" id="experience" class="input" placeholder="Entrer les années d'experience"><br>
+                <input type="number" id="experience" class="input" placeholder="Entrer les années d'experience"><br>
                 <!-- <label for="Email">Email</label><br> -->
                 <input type="text" id="address" class="input" placeholder="Enter your address"><br>
-                <input type="number" id="number" class="input" placeholder="Entrez votre Num de télephone"><br>
-                <!-- <label for="Password">Password</label><br> -->
-                <input type="image" id="image" class="input" placeholder="Enter your image url"><br>
+                <input type="tel" id="number" class="input" placeholder="Entrez votre Num de télephone"><br>
+                <input type="text" id="location" class="input" placeholder="Entrez votre location de cabinet"><br>
+                <select name="specialite" id="spe">
+                    <option value="default">choisissez votre specialité</option>
+                </select>
+                <input type="image" id="image" class="input" placeholder="Entrez votre profil"><br>
                 
                 <p class="terms"><input type="checkbox" required> En cliquant, vous acceptez <br> AvocatConnect
                     Conditions
                     d'utilisation et politique de confidentialité.</p>
-                <button id="Signupbtn">Inscrire</button>
+                <button type="submit" id="Signupbtn">Inscrire</button>
                 <p class="temp">Vous avez déjà un compte?<a href="./userlogin.php"> Connecter</a> </p>
 
             </form>

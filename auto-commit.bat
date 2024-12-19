@@ -8,7 +8,7 @@ cd /d "C:\laragon\www\AvocatConnect"
 git add .
 
 :: Commit avec un message automatique
-git commit -m "page connexion coté avocat "
+git commit -m "Travail sur coté backend"
 
 :: Pousser les modifications sur la branche principale (main ou master)
 git push origin main
