@@ -5,13 +5,6 @@ document.querySelector("form").addEventListener("submit", (e) => {
 })
 
 
-// You can now use the "userDetails" object to do further processing, such as sending the data to a server or performing validation.
-
-// For demonstration purposes, let's display the user details in the console:
-//console.log(userDetails);
-
-
-
 async function signup() {
     try {
         //console.log(1)

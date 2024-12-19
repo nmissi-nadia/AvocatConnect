@@ -1,53 +1,69 @@
--- -------------------------
+-- ---------------------------------
 -- 1. Création de la base de données
--- -------------------------
-CREATE DATABASE AvocatConnect;
-USE AvocatConnect;
+-- ---------------------------------
+CREATE DATABASE avocat;
+USE avocat;
 
 -- -------------------------
 -- 2. Création des tables
 -- -------------------------
 
--- Table User
-CREATE TABLE User (
-    id_user INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL,
-    prenom VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    mot_de_passe VARCHAR(255) NOT NULL,
-    telephone VARCHAR(15),
-    photo_profil VARCHAR(255),
-    specialite INT DEFAULT NULL,
-    biographie TEXT DEFAULT NULL,
-    role ENUM('Client', 'Avocat') NOT NULL,
-    FOREIGN KEY (specialite) REFERENCES Specialite(id_spe) ON DELETE SET NULL
+-- Table Utilisateur
+CREATE TABLE utilisateur (
+    us_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone_number VARCHAR(15) NOT NULL UNIQUE,
+    mot_de_passe VARCHAR(500) NOT NULL,
+    role ENUM('Client', 'Avocat') NOT NULL
 );
 
--- Table Specialite
-CREATE TABLE Specialite (
-    id_spe INT AUTO_INCREMENT PRIMARY KEY,
-    label VARCHAR(100) NOT NULL
-);
-
--- Table Reservation
-CREATE TABLE Reservation (
-    id_reservation INT AUTO_INCREMENT PRIMARY KEY,
-    date_reservation DATETIME NOT NULL,
-    id_client INT NOT NULL,
-    id_avocat INT NOT NULL,
-    statut ENUM('En attente', 'Acceptée', 'Refusée') DEFAULT 'En attente',
-    FOREIGN KEY (id_client) REFERENCES User(id_user) ON DELETE CASCADE,
-    FOREIGN KEY (id_avocat) REFERENCES User(id_user) ON DELETE CASCADE
+-- Table Informations (détails des avocats)
+CREATE TABLE infos (
+    info_id INT PRIMARY KEY AUTO_INCREMENT,
+    avocat_id INT NOT NULL,
+    specialite VARCHAR(50),
+    biography TEXT,
+    annee_experience VARCHAR(50),
+    picture BLOB,
+    location VARCHAR(150),
+    FOREIGN KEY (avocat_id) REFERENCES utilisateur(us_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 -- Table Disponibilite
-CREATE TABLE Disponibilite (
-    id_disponibilite INT AUTO_INCREMENT PRIMARY KEY,
-    id_avocat INT NOT NULL,
-    date_disponible DATE NOT NULL,
-    statut BOOLEAN DEFAULT TRUE,
-    FOREIGN KEY (id_avocat) REFERENCES User(id_user) ON DELETE CASCADE
+CREATE TABLE disponibilite (
+    dispo_id INT PRIMARY KEY AUTO_INCREMENT,
+    avocat_id INT NOT NULL,
+    dispo_date DATE NOT NULL,
+    statut ENUM('disponible', 'occupe') DEFAULT 'disponible',
+    FOREIGN KEY (avocat_id) REFERENCES utilisateur(us_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
+
+-- Table Reservation
+CREATE TABLE reservations (
+    reservation_id INT PRIMARY KEY AUTO_INCREMENT,
+    avocat_id INT NOT NULL,
+    client_id INT NOT NULL,
+    dispo_id INT NOT NULL,
+    reservation_date DATE NOT NULL,
+    FOREIGN KEY (avocat_id) REFERENCES utilisateur(us_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (client_id) REFERENCES utilisateur(us_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (dispo_id) REFERENCES disponibilite(dispo_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
+
 
 -- -------------------------
 -- 3. Insertion des données initiales
