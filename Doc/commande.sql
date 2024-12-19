@@ -26,7 +26,7 @@ CREATE TABLE infos (
     specialite VARCHAR(50),
     biography TEXT,
     annee_experience VARCHAR(50),
-    picture BLOB,
+    picture varchar(50),
     location VARCHAR(150),
     FOREIGN KEY (avocat_id) REFERENCES utilisateur(us_id)
         ON DELETE CASCADE

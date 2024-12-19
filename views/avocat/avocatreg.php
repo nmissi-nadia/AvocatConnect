@@ -41,10 +41,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $location = mysqli_real_escape_string($conn, $_POST['location']);
     $specialite = mysqli_real_escape_string($conn, $_POST['specialite']);
     
+    // Vérification de l'unicité de l'email et du numéro de téléphone
+    $checkEmail = mysqli_query($conn, "SELECT * FROM utilisateur WHERE email='$email'");
+    $checkPhone = mysqli_query($conn, "SELECT * FROM utilisateur WHERE phone_number='$number'");
+    
+    if (mysqli_num_rows($checkEmail) > 0) {
+        die("L'email est déjà utilisé.");
+    }
+    
+    if (mysqli_num_rows($checkPhone) > 0) {
+        die("Le numéro de téléphone est déjà utilisé.");
+    }
+
     // Gestion du fichier d'image
     $imageData = null;
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-        $imageData = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+        $imageName = basename($_FILES['image']['name']);
+        $targetDirectory = 'C:/Users/safiy/OneDrive/Images/'; // Dossier de destination
+        $targetFilePath = $targetDirectory . $imageName;
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFilePath)) {
+            $imageData = $imageName;
+        } else {
+            die("Échec de l'upload de l'image.");
+        }
     }
     
     // Validation des champs obligatoires
@@ -67,6 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                       VALUES ('$userId', '$specialite', '$bio', '$experience', '$imageData', '$location')";
         
         if (mysqli_query($conn, $queryInfo)) {
+            // Optionnel : Ajout de la gestion de disponibilités ici si nécessaire
+            header("Location: ../userlogin.php");
             echo "Inscription réussie !";
         } else {
             echo "Erreur lors de l'insertion des informations : " . mysqli_error($conn);
@@ -80,7 +101,6 @@ mysqli_close($conn);
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,15 +113,15 @@ mysqli_close($conn);
     <div id="maindiv">
         <div id="from">
             <h2 style="margin-bottom: -20px;">Créer un compte</h2>
-            <h4 style="margin-bottom: 20px;">Ici pour les Avocat</h4>
+            <h4 style="margin-bottom: 20px;">Ici pour les Avocats</h4>
             <form action="" method="POST" enctype="multipart/form-data">
                 <input type="text" name="name" class="input" placeholder="Entrez votre Nom" required><br>
                 <input type="text" name="prenom" class="input" placeholder="Entrez votre Prénom" required><br>
                 <input type="email" name="email" class="input" placeholder="Entrez votre email" required><br>
                 <input type="password" name="password" class="input" placeholder="Entrez votre mot de passe" required><br>
-                <input type="text" name="bio" class="input" placeholder="Entrez votre Biography" required><br>
-                <input type="number" name="experience" class="input" placeholder="Entrer les années d'experience" required><br>
-                <input type="text" name="address" class="input" placeholder="Enter your address" required><br>
+                <input type="text" name="bio" class="input" placeholder="Entrez votre Biographie" required><br>
+                <input type="number" name="experience" class="input" placeholder="Entrer les années d'expérience" required><br>
+                <input type="text" name="address" class="input" placeholder="Entrez votre adresse" required><br>
                 <input type="tel" name="number" class="input" placeholder="Entrez votre Num de téléphone" required><br>
                 <input type="text" name="location" class="input" placeholder="Entrez votre location de cabinet" required><br>
                 <select name="specialite" id="spe" required>
