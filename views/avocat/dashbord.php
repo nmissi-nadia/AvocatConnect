@@ -1,3 +1,44 @@
+<?php
+// Démarrer la session
+session_start();
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Avocat') {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Affiche les informations de l'utilisateur connecté
+$user_id = $_SESSION['user_id'];
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+
+echo "<h1>Bienvenue sur le Dashboard de l'Avocat</h1>";
+echo "<p>Nom : $name</p>";
+echo "<p>Email : $email</p>";
+
+// Connexion à la base de données pour récupérer plus d'infos
+$conn = mysqli_connect('localhost', 'root', '', 'avocat');
+if (!$conn) {
+    die("Erreur de connexion à la base de données : " . mysqli_connect_error());
+}
+
+$query = "SELECT * FROM infos WHERE avocat_id = $user_id";
+$result = mysqli_query($conn, $query);
+if (mysqli_num_rows($result) > 0) {
+    $avocatInfo = mysqli_fetch_assoc($result);
+    echo "<p>Spécialité : " . $avocatInfo['specialite'] . "</p>";
+    echo "<p>Biographie : " . $avocatInfo['biography'] . "</p>";
+    echo "<p>Années d'expérience : " . $avocatInfo['annee_experience'] . "</p>";
+    echo "<p>Location : " . $avocatInfo['location'] . "</p>";
+} else {
+    echo "<p>Aucune information supplémentaire disponible</p>";
+}
+
+mysqli_close($conn);
+?>
+
+<a href="../logout.php">Se déconnecter</a>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

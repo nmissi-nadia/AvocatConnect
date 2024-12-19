@@ -14,12 +14,12 @@ signInButton.addEventListener('click', () => {
 /////////////
 
 ////////////////
-container.style.backgroundImage = "url('https://cdn.wallpapersafari.com/61/98/9YExRm.jpg')";
+container.style.backgroundImage = "url('../images/safari.png')";
 container.style.backgroundRepeat = "no-repeat";
 container.style.backgroundSize = "cover";
 container.style.position = "relative";
 //////////////////////////////////////////////
-let baseurl = "https://law-connect.onrender.com";
+
 
 const signup_btn = document.getElementById("button1")
 signup_btn.addEventListener("click", (e) => {
@@ -80,53 +80,38 @@ async function signup() {
 
 async function login() {
   try {
-    // event.preventDefault();
-    let email = document.getElementById("email-log").value
+    console.log(document.getElementById("email-log").value);
+    let email = document.getElementById("email-log").value;
     let password = document.getElementById("password-log").value;
     let role = document.getElementById("role").value;
+
     let obj = {
       email,
-      password
+      password,
+      role
+    };
 
-    }
-    //////////////////////
-    let loginUrl;
-    if (role === "user") {
-      loginUrl = `${baseurl}/user/login`;
-    } else {
-      loginUrl = `${baseurl}/user/lawyer-login`;
-    }
-
-    ////////////////////////////
-
-    await fetch(loginUrl, {
+    const response = await fetch("login_avocat.php", {
       method: "POST",
-      body: JSON.stringify(obj),
-      headers: {
-        'content-type': 'application/json'
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(obj)
+    });
+
+    const res = await response.json();
+    alert(res.msg);
+
+    if (res.status === 'success') {
+      if (res.role === 'Client') {
+        window.location.href = "client/dashboard.php";
+      } else if (res.role === 'Avocat') {
+        window.location.href = "avocat/dashboard.php";
       }
-    })
-      .then(res => res.json())
-      .then((res) => {
-        localStorage.setItem('key', res.token);
-        localStorage.setItem('name', res.Name);
-        localStorage.setItem('userData', JSON.stringify(res.userData));
-        alert(res.msg);
-        if (res.msg === "sucessfully Login!") {
-
-          if (res.role === "user") {
-            window.location.href = "./HomePage.html"
-          } else {
-            window.location.href = "./Lhomepage.html"
-          }
-
-        } else {
-          alert("WRONG INPUT")
-        }
-      })
-
+    } else {
+      alert("Erreur de connexion : " + res.msg);
+    }
   } catch (error) {
-    alert("Something going wrong")
+    alert("Une erreur est survenue lors de la connexion.");
+    console.error(error);
   }
-
 }
+

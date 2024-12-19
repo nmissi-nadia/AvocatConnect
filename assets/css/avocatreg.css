@@ -10,6 +10,7 @@ body{
     margin: auto;
     margin-top: 70px;
     margin-bottom: 30px;
+    
   }
   #from {
     /* border: 1px solid red; */
@@ -17,6 +18,7 @@ body{
     margin: auto;
     padding: 30px;
     text-align: center;
+    background-image: url(../images/safari.png) !important;
     /* height: 450px; */
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
       rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -37,7 +39,7 @@ body{
   #maindiv form .terms{
     margin-top: 20px;
   }
-  #from .input {
+  #from .input,select{
     width: 250px;
     border-radius: 5px;
     border: none;

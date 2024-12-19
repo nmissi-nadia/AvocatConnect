@@ -1,3 +1,27 @@
+<?php
+// Démarrer la session
+session_start();
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Client') {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Affiche les informations de l'utilisateur connecté
+$user_id = $_SESSION['user_id'];
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+
+echo "<h1>Bienvenue sur le Dashboard du Client</h1>";
+echo "<p>Nom : $name</p>";
+echo "<p>Email : $email</p>";
+
+// Vous pouvez ajouter d'autres informations ici si nécessaire
+
+?>
+
+<a href="../logout.php">Se déconnecter</a>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
