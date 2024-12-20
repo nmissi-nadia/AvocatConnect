@@ -8,7 +8,7 @@ cd /d "C:\laragon\www\AvocatConnect"
 git add .
 
 :: Commit avec un message automatique
-git commit -m "partie authentification cote avocat terminer"
+git commit -m "Backend dashboard avocat"
 
 :: Pousser les modifications sur la branche principale (main ou master)
 git push origin main

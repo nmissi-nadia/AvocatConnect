@@ -12,9 +12,6 @@ $user_id = $_SESSION['user_id'];
 $name = $_SESSION['name'];
 $email = $_SESSION['email'];
 
-echo "<h1>Bienvenue sur le Dashboard de l'Avocat</h1>";
-echo "<p>Nom : $name</p>";
-echo "<p>Email : $email</p>";
 
 // Connexion à la base de données pour récupérer plus d'infos
 $conn = mysqli_connect('localhost', 'root', '', 'avocat');
@@ -24,20 +21,37 @@ if (!$conn) {
 
 $query = "SELECT * FROM infos WHERE avocat_id = $user_id";
 $result = mysqli_query($conn, $query);
+
 if (mysqli_num_rows($result) > 0) {
     $avocatInfo = mysqli_fetch_assoc($result);
-    echo "<p>Spécialité : " . $avocatInfo['specialite'] . "</p>";
-    echo "<p>Biographie : " . $avocatInfo['biography'] . "</p>";
-    echo "<p>Années d'expérience : " . $avocatInfo['annee_experience'] . "</p>";
-    echo "<p>Location : " . $avocatInfo['location'] . "</p>";
+    
+    $picture=$avocatInfo['picture'];
+    echo "<script>console.log($picture);</script>";
 } else {
     echo "<p>Aucune information supplémentaire disponible</p>";
 }
 
-mysqli_close($conn);
+// Requête SQL pour récupérer les réservations liées à l'avocat connecté
+$query3 = "
+    SELECT r.reservation_id, r.reservation_date, r.statut, 
+           u1.name AS client_name, u2.name AS avocat_name 
+    FROM reservations r 
+    JOIN utilisateur u1 ON r.client_id = u1.us_id 
+    JOIN utilisateur u2 ON r.avocat_id = u2.us_id 
+    WHERE r.avocat_id = $user_id 
+    ORDER BY r.reservation_date DESC
+";
+
+$result1 = mysqli_query($conn, $query3);
+
+if (!$result1) {
+    die("Erreur lors de l'exécution de la requête : " . mysqli_error($conn));
+}
+
+
 ?>
 
-<a href="../logout.php">Se déconnecter</a>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -67,16 +81,16 @@ mysqli_close($conn);
                 </div>
         </li>
          <li>
-            <button href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
                </svg>
                <span class="ms-3">Dashboard</span>
-            </button>
+            </a>
          </li>
          <li>
-            <button href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <button  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
                </svg>
@@ -102,7 +116,7 @@ mysqli_close($conn);
          </li>
         
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="../logout.php" class="flex items-center p-2 text-[15px] font-medium text-white leading-[26px] py-[9px] px-[25px] bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md transition-all duration-200 ease-in-out hover:bg-gradient-to-r hover:from-[#EC008C] hover:to-[#fc6767] group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
                   <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
@@ -122,7 +136,7 @@ mysqli_close($conn);
         <!-- Header -->
         <header class="bg-white shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                <h1 class="text-2xl font-semibold text-gray-900">Tableau de Bord Avocat</h1>
+                <h1 class="text-2xl font-semibold text-gray-900">Tableau de Bord <?php echo "$name"; ?> </h1>
                 <div class="flex items-center space-x-4">
                     <button class="relative">
                         <span class="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
@@ -130,7 +144,7 @@ mysqli_close($conn);
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                         </svg>
                     </button>
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile">
+                    <img class="h-10 w-10 rounded-full" src="<?php echo'$picture'; ?>" alt="Profile">
                 </div>
             </div>
         </header>
@@ -159,7 +173,17 @@ mysqli_close($conn);
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
                                 </svg>
                             </div>
-                            <h2 class="self-center text-3xl font-bold">421</h2>
+                            <h2 class="self-center text-3xl font-bold"><?php $query1 = "SELECT COUNT(DISTINCT client_id) AS nombre_clients FROM reservations WHERE avocat_id = $user_id";
+
+                            $result = mysqli_query($conn, $query1);
+
+                            if ($result) {
+                                $row = mysqli_fetch_assoc($result);
+                                $nombre_clients = $row['nombre_clients'];
+                                echo "$nombre_clients";
+                            } else {
+                                echo "Erreur lors de l'exécution de la requête : " . mysqli_error($conn);
+                            } ?></h2>
                         </div>
                         <div class="px-6 pb-6">
                             <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
@@ -182,7 +206,17 @@ mysqli_close($conn);
                             <div class="relative h-14 w-14 self-center rounded-full bg-yellow-500 text-center text-yellow-50">
                             <img src="../../assets/images/consultation.svg" alt="">
                             </div>
-                            <h2 class="self-center text-3xl font-bold"><span>$</span>31K</h2>
+                            <h2 class="self-center text-3xl font-bold"><?php $query2 = "SELECT COUNT(*) AS nombre_demandes_en_attente FROM reservations WHERE avocat_id = $user_id AND statut = 'en_attente'";
+
+                                                                            $result = mysqli_query($conn, $query2);
+
+                                                                            if ($result) {
+                                                                                $row = mysqli_fetch_assoc($result);
+                                                                                $nombre_demandes_en_attente = $row['nombre_demandes_en_attente'];
+                                                                                echo "$nombre_demandes_en_attente";
+                                                                            } else {
+                                                                                echo "Erreur lors de l'exécution de la requête : " . mysqli_error($conn);
+                                                                            } ?></h2>
                         </div>
                         <div class="px-6 pb-6">
                             <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
@@ -207,7 +241,21 @@ mysqli_close($conn);
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
                                 </svg>
                             </div>
-                            <h2 class="self-center text-3xl font-bold">1.2K</h2>
+                            <h2 class="self-center text-3xl font-bold"><?php $query = "SELECT COUNT(*) AS nombre_demandes_approuvees 
+                                                                                        FROM reservations 
+                                                                                        WHERE avocat_id = $user_id 
+                                                                                        AND statut = 'confirmee' 
+                                                                                        AND DATE(reservation_date) = CURDATE()";
+
+                                                                                $result = mysqli_query($conn, $query);
+
+                                                                                if ($result) {
+                                                                                    $row = mysqli_fetch_assoc($result);
+                                                                                    $nombre_demandes_approuvees = $row['nombre_demandes_approuvees'];
+                                                                                    echo "$nombre_demandes_approuvees";
+                                                                                } else {
+                                                                                    echo "Erreur lors de l'exécution de la requête : " . mysqli_error($conn);
+                                                                                } ?></h2>
                         </div>
                         <div class="px-6 pb-6">
                             <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
@@ -223,7 +271,21 @@ mysqli_close($conn);
                                 <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
                             </svg>
                             </div>
-                            <h2 class="self-center text-3xl font-bold">602</h2>
+                            <h2 class="self-center text-3xl font-bold"><?php $query = "SELECT COUNT(*) AS nombre_demandes_approuvees 
+                                                                                FROM reservations 
+                                                                                WHERE avocat_id = $user_id 
+                                                                                AND statut = 'confirmee' 
+                                                                                AND DATE(reservation_date) = CURDATE() + INTERVAL 1 DAY";
+
+                                                                        $result = mysqli_query($conn, $query);
+
+                                                                        if ($result) {
+                                                                            $row = mysqli_fetch_assoc($result);
+                                                                            $nombre_demandes_approuvees = $row['nombre_demandes_approuvees'];
+                                                                            echo "$nombre_demandes_approuvees";
+                                                                        } else {
+                                                                            echo "Erreur lors de l'exécution de la requête : " . mysqli_error($conn);
+                                                                        } ?></h2>
                         </div>
                         <div class="px-6 pb-6">
                             <a class="text-sm hover:text-indigo-500" href="#">View more...</a>
@@ -272,15 +334,54 @@ mysqli_close($conn);
                     </div>
                 </div>
             </div>
+                    <div id="reservation" class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+                            <h2 class="text-2xl font-semibold text-gray-700 mb-6">Vos Réservations</h2>
+
+                            <?php if (mysqli_num_rows($result) > 0): ?>
+                                <table class="min-w-full table-auto">
+                                    <thead>
+                                        <tr class="bg-gray-200 text-gray-700 text-left">
+                                            <th class="py-3 px-4">ID Réservation</th>
+                                            <th class="py-3 px-4">Client</th>
+                                            <th class="py-3 px-4">Date de Réservation</th>
+                                            <th class="py-3 px-4">Statut</th>
+                                            <th class="py-3 px-4">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white">
+                                        <?php while ($row = mysqli_fetch_assoc($result1)): ?>
+                                            <tr class="border-b hover:bg-gray-100">
+                                                <td class="py-3 px-4"><?php echo $row['reservation_id']; ?></td>
+                                                <td class="py-3 px-4"><?php echo $row['client_name']; ?></td>
+                                                <td class="py-3 px-4"><?php echo date('d/m/Y', strtotime($row['reservation_date'])); ?></td>
+                                                <td class="py-3 px-4">
+                                                    <?php 
+                                                        $statutClass = $row['statut'] === 'confirmee' ? 'bg-green-500' : ($row['statut'] === 'en_attente' ? 'bg-yellow-500' : 'bg-red-500');
+                                                    ?>
+                                                    <span class="text-white py-1 px-3 rounded-full text-sm <?php echo $statutClass; ?>">
+                                                        <?php echo ucfirst($row['statut']); ?>
+                                                    </span>
+                                                </td>
+                                                <td class="py-3 px-4">
+                                                    <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700">Voir</button>
+                                                    <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700">Annuler</button>
+                                                </td>
+                                            </tr>
+                                        <?php endwhile; ?>
+                                    </tbody>
+                                </table>
+                            <?php else: ?>
+                                <p class="text-center text-gray-500 mt-8">Aucune réservation trouvée.</p>
+                            <?php endif; ?>
+
+            </div>
         </main>
     </div>
 </div>
 
-<script src="../../assets/js/script.js"></script>
-<script src="../../assetsjs/data/apointment.js"></script>
-    <script src="../../assets/js/data/avocatt.js"></script>
+    <script src="../../assets/js/script.js"></script>
     <script src="../../assets/js/utils/date-formatter.js"></script>
-    <script src="../../assets/js/avocat.js"></script>
-   
+    <!-- <script src="../../assets/js/avocat.js"></script> -->
+   <?php mysqli_close($conn); ?>
 </body>
 </html>

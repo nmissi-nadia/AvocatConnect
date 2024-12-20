@@ -51,6 +51,7 @@ CREATE TABLE reservations (
     client_id INT NOT NULL,
     dispo_id INT NOT NULL,
     reservation_date DATE NOT NULL,
+    statut ENUM('en_attente', 'confirmee', 'annulee') DEFAULT 'en_attente';
     FOREIGN KEY (avocat_id) REFERENCES utilisateur(us_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
