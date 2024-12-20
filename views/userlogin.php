@@ -1,15 +1,5 @@
 <?php
-// Connexion à la base de données
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'avocat';
-
-$conn = mysqli_connect($host, $user, $password, $dbname);
-
-if (!$conn) {
-    die("Erreur de connexion à la base de données : " . mysqli_connect_error());
-}
+include "db_connect.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des données du formulaire
@@ -37,8 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Redirection vers le bon dashboard
             if ($user['role'] === 'Avocat') {
                 header("Location: avocat/dashbord.php");
-            } else {
-                header("Location: client/dashboard.php");
+            } 
+            if($user['role'] === 'Client') {
+                header("Location: client/dashbord.php");
             }
             exit();
         } else {
@@ -62,15 +53,14 @@ mysqli_close($conn);
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="" id="form1" method="POST">
+            <form action="inscription.php" id="form1" method="POST">
                 <h1>Créer un compte</h1>
                 <span>Utilisez votre email pour vous inscrire</span>
                 <input type="text" name="name" placeholder="Nom" id="name" required>
+                <input type="text" name="fi_name" placeholder="Prénom" id="fi_name" required>
                 <input type="email" name="email" placeholder="Email" id="email" required>
                 <input type="password" name="password" placeholder="Mot de passe" id="password" required>
                 <input type="text" name="phone" placeholder="Numéro de téléphone" id="phone" required>
-                <input type="text" name="city" placeholder="Ville" id="city" required>
-                <input type="number" name="age" placeholder="Âge" id="age" required>
                 <button id="button1">Inscrire</button>
             </form>
         </div>

@@ -8,19 +8,34 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Client') {
 }
 
 // Affiche les informations de l'utilisateur connecté
-$user_id = $_SESSION['user_id'];
+$client_id = $_SESSION['user_id'];
 $name = $_SESSION['name'];
 $email = $_SESSION['email'];
 
-echo "<h1>Bienvenue sur le Dashboard du Client</h1>";
-echo "<p>Nom : $name</p>";
-echo "<p>Email : $email</p>";
 
-// Vous pouvez ajouter d'autres informations ici si nécessaire
+
+// Requête SQL pour récupérer les informations personnelles du client
+$query = "SELECT * FROM utilisateur WHERE us_id = $client_id";
+$result = mysqli_query($conn, $query);
+$client = mysqli_fetch_assoc($result);
+
+// Requête SQL pour récupérer la liste des avocats
+$queryAvocats = "SELECT * FROM utilisateur WHERE role = 'Avocat'";
+$resultAvocats = mysqli_query($conn, $queryAvocats);
+
+// Requête SQL pour récupérer les réservations du client
+$queryReservations = "
+    SELECT r.reservation_id, r.reservation_date, r.statut, 
+           u.name AS avocat_name 
+    FROM reservations r 
+    JOIN utilisateur u ON r.avocat_id = u.us_id 
+    WHERE r.client_id = $client_id 
+    ORDER BY r.reservation_date DESC
+";
+$resultReservations = mysqli_query($conn, $queryReservations);
+
 
 ?>
-
-<a href="../logout.php">Se déconnecter</a>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,15 +76,7 @@ echo "<p>Email : $email</p>";
             </a>
          </li>
         
-         <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
-               </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
-               <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
-            </a>
-         </li>
+         
          <li>
             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -88,7 +95,7 @@ echo "<p>Email : $email</p>";
          </li>
         
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="../logout.php" class="flex items-center p-2 text-gray-900 bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
                   <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
@@ -106,7 +113,7 @@ echo "<p>Email : $email</p>";
 <div class="min-h-screen">
         <header class="bg-white shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-                <h1 class="text-2xl font-semibold text-gray-900">Mon Espace Client</h1>
+                <h1 class="text-2xl font-semibold text-gray-900">Mon Espace Client :<?php echo "$name "; ?></h1>
             </div>
         </header>
 
@@ -263,6 +270,26 @@ echo "<p>Email : $email</p>";
                     </ul>
                 </div>
             </div>
+
+            <!-- Section : Consultation des profils des avocats -->
+               <div class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+                  <h2 class="text-2xl font-semibold text-gray-700 mb-6">Profils des Avocats</h2>
+
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                     <?php while ($avocat = mysqli_fetch_assoc($resultAvocats)): ?>
+                           <div class="bg-white p-6 rounded-lg shadow-lg">
+                              <img src="uploads/<?php echo $avocat['picture']; ?>" alt="Avatar de l'avocat" class="w-24 h-24 rounded-full mx-auto">
+                              <h3 class="text-xl text-center mt-4"><?php echo $avocat['name'] . ' ' . $avocat['first_name']; ?></h3>
+                              <p class="text-gray-600 text-center mt-2"><?php echo $avocat['email']; ?></p>
+                              <p class="text-center mt-4">
+                                 <button onclick="openReservationModal(<?php echo $avocat['us_id']; ?>)" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                       Réserver
+                                 </button>
+                              </p>
+                           </div>
+                     <?php endwhile; ?>
+                  </div>
+               </div>
         </main>
     </div>
 </div>
@@ -274,3 +301,4 @@ echo "<p>Email : $email</p>";
     <script src="../../assets/js/utils/date-formatter.js"></script>
 </body>
 </html>
+<?php mysqli_close($conn); ?>

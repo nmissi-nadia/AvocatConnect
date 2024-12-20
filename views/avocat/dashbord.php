@@ -26,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
     $avocatInfo = mysqli_fetch_assoc($result);
     
     $picture=$avocatInfo['picture'];
-    echo "<script>console.log($picture);</script>";
+    
 } else {
     echo "<p>Aucune information supplémentaire disponible</p>";
 }
@@ -48,6 +48,35 @@ if (!$result1) {
     die("Erreur lors de l'exécution de la requête : " . mysqli_error($conn));
 }
 
+$query4 = "
+    SELECT DISTINCT u1.us_id, u1.name, u1.email, u1.phone_number 
+    FROM reservations r 
+    JOIN utilisateur u1 ON r.client_id = u1.us_id 
+    WHERE r.avocat_id = $user_id
+    ORDER BY u1.name ASC
+";
+
+$result3 = mysqli_query($conn, $query4);
+
+if (!$result3) {
+    die("Erreur lors de l'exécution de la requête : " . mysqli_error($conn));
+}
+// Requête SQL pour récupérer les informations de l'avocat
+$query6 = "
+    SELECT u.name, u.first_name, u.email, u.phone_number, 
+           i.specialite, i.biography, i.annee_experience, i.picture, i.location 
+    FROM utilisateur u 
+    JOIN infos i ON u.us_id = i.avocat_id 
+    WHERE u.us_id = $user_id
+";
+
+$result4 = mysqli_query($conn, $query6);
+
+if (mysqli_num_rows($result4) > 0) {
+    $avocat = mysqli_fetch_assoc($result4);
+} else {
+    die("Aucun avocat trouvé.");
+}
 
 ?>
 
@@ -70,7 +99,7 @@ if (!$result1) {
    </svg>
 </button>
 
-<aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 " aria-label="Sidebar">
+<aside id="cta-button-sidebar" class="fixed z-20  top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 " aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
       <ul class="space-y-2 font-medium">
         <li>
@@ -91,15 +120,56 @@ if (!$result1) {
          </li>
          <li>
             <button  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+               <!-- <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
-               </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">Profile</span>
-               <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+               </svg> -->
+               <span class="flex-1 ms-3 whitespace-nowrap"></span>
             </button>
          </li>
+
+         <button class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z"/>
+    </svg>
+    ok
+</button>
+
+<!-- Le modal que tu veux afficher -->
+<div id="affiche" class="hidden">
+    <p>Voici le contenu du modal.</p>
+    <button id="closeModalBtn">Fermer</button>
+</div>
+
+<script>
+    const showProfileBtn = document.getElementById('showProfileBtn');
+    const affiche = document.getElementById('affiche');
+
+    // Affiche le modal lorsqu'on clique sur le bouton
+    showProfileBtn.addEventListener('click', () => affiche.classList.remove('hidden'));
+</script>
+
+
+
+
+<script>
+    const showProfileBtn = document.getElementById('showProfileBtn');
+    const affiche = document.getElementById('affiche');
+
+    // Affiche le modal lorsqu'on clique sur le bouton
+    showProfileBtn.addEventListener('click', () => affiche.classList.remove('hidden'));
+</script>
+
+
+
+
+
+
+
+
+
+         <!--  -->
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#reservation" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                   <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
                </svg>
@@ -107,7 +177,7 @@ if (!$result1) {
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#client" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
                </svg>
@@ -136,9 +206,9 @@ if (!$result1) {
         <!-- Header -->
         <header class="bg-white shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                <h1 class="text-2xl font-semibold text-gray-900">Tableau de Bord <?php echo "$name"; ?> </h1>
+                <h1 class="text-2xl font-semibold text-gray-900">Tableau de Bord du  <?php echo "$name"; ?> </h1>
                 <div class="flex items-center space-x-4">
-                    <button class="relative">
+                    <button id="showProfileBtn"  class="relative">
                         <span class="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -148,12 +218,77 @@ if (!$result1) {
                 </div>
             </div>
         </header>
+        <div id="affiche" class="fixed inset-0 w-3/4 sm:scale[1/2] ml-[300px] bg-gray-900 bg-opacity-50 z-100 flex justify-center items-center hidden">
+    <div class="p-16">
+        <div class="p-8 bg-white shadow mt-24">
+            <div class="grid grid-cols-1 md:grid-cols-3">
+                <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+                    <div>
+                        <p class="font-bold text-gray-700 text-xl"><?php $query1 = "SELECT COUNT(DISTINCT client_id) AS nombre_clients FROM reservations WHERE avocat_id = $user_id";
 
+                                $result = mysqli_query($conn, $query1);
+
+                                if ($result) {
+                                    $row = mysqli_fetch_assoc($result);
+                                    $nombre_clients = $row['nombre_clients'];
+                                    echo "$nombre_clients";
+                                } else {
+                                    echo "Erreur lors de l'exécution de la requête : " . mysqli_error($conn);
+                                } ?></p>
+                        <p class="text-gray-400">Clients</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-700 text-xl"><?php echo $avocat['annee_experience']; ?></p>
+                        <p class="text-gray-400">Années d'expérience</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-700 text-xl">10</p>
+                        <p class="text-gray-400">Commentaires</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center">
+                        <img src="C:/Users/safiy/OneDrive/Images/<?php echo $avocat['picture']; ?>" alt="Profil de l'avocat" class="w-48 h-48 rounded-full object-cover">
+                    </div>
+                </div>
+
+                <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+                    <button class="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                        Connecter
+                    </button>
+                    <button id="closeModalBtn" class="text-white py-2 px-4  rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                        Close
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center border-b pb-12">
+                <h1 class="text-4xl font-medium text-gray-700">
+                    <?php echo $avocat['name'] . ' ' . $avocat['first_name']; ?>
+                </h1>
+                <p class="font-light text-gray-600 mt-3"><?php echo $avocat['location']; ?></p>
+                <p class="mt-8 text-gray-500">Spécialité : <?php echo $avocat['specialite']; ?></p>
+                <p class="mt-2 text-gray-500"><?php echo $avocat['email']; ?></p>
+                <p class="mt-2 text-gray-500"><?php echo $avocat['phone_number']; ?></p>
+            </div>
+
+            <div class="mt-12 flex flex-col justify-center">
+                <p class="text-gray-600 text-center font-light lg:px-16">
+                    <?php echo $avocat['biography']; ?>
+                </p>
+                <button class="text-indigo-500 py-2 px-4 font-medium mt-4">
+                    Afficher plus
+                </button>  
+            </div>
+        </div>
+    </div>
+</div>
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <!-- Stats Grid -->
                 <div id="stats" class="flex flex-row flex-wrap">
                     <div class="w-full max-w-full flex-shrink px-4">
-                        <p class="mb-5 mt-3 text-xl font-bold">Statistique</p>
+                        <p class="mb-5 mt-3 text-xl font-bold">Statistiques</p>
                     </div>
                     <div class="mb-10 w-full max-w-full flex-shrink px-8 sm:w-1/2 lg:w-1/4">
                         <div class="h-full rounded-xl bg-white shadow-2xl">
@@ -318,7 +453,7 @@ if (!$result1) {
                     </ul>
                 </div>
             </div>
-
+            
             <div class="max-w-7xl mx-auto px-4 py-8">
                 <div class="mb-8">
                     <h2 class="text-2xl font-semibold mb-4">Demandes en attente</h2>
@@ -334,7 +469,11 @@ if (!$result1) {
                     </div>
                 </div>
             </div>
-                    <div id="reservation" class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+            <div class="bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md w-1/2 justify-self-center  text-white text-center p-6">
+                
+                <p class="text-sm mt-2">Consultez toutes vos réservations et suivez leur statut</p>
+            </div>
+            <div id="reservation" class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
                             <h2 class="text-2xl font-semibold text-gray-700 mb-6">Vos Réservations</h2>
 
                             <?php if (mysqli_num_rows($result) > 0): ?>
@@ -375,12 +514,119 @@ if (!$result1) {
                             <?php endif; ?>
 
             </div>
+            <div class="bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md shadow-md w-1/2 justify-self-center text-white text-center p-6 pt-6">
+                <h1 class="text-3xl font-bold">Liste des clients</h1>
+                <p class="text-sm mt-2">Consultez la liste des clients ayant réservé vos services</p>
+            </div>
+            <div id="client" class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-6">Clients ayant réservé vos services</h2>
+
+                        <?php if (mysqli_num_rows($result3) > 0): ?>
+                            <table class="min-w-full table-auto">
+                                <thead>
+                                    <tr class="bg-gray-200 text-gray-700 text-left">
+                                        <th class="py-3 px-4">ID Client</th>
+                                        <th class="py-3 px-4">Nom du client</th>
+                                        <th class="py-3 px-4">Email</th>
+                                        <th class="py-3 px-4">Numéro de téléphone</th>
+                                        <th class="py-3 px-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white">
+                                    <?php while ($row = mysqli_fetch_assoc($result3)): ?>
+                                        <tr class="border-b hover:bg-gray-100">
+                                            <td class="py-3 px-4"><?php echo $row['us_id']; ?></td>
+                                            <td class="py-3 px-4"><?php echo $row['name']; ?></td>
+                                            <td class="py-3 px-4"><?php echo $row['email']; ?></td>
+                                            <td class="py-3 px-4"><?php echo $row['phone_number']; ?></td>
+                                            <td class="py-3 px-4">
+                                                <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700">Voir Profil</button>
+                                                <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700">Supprimer</button>
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <p class="text-center text-gray-500 mt-8">Aucun client n'a encore réservé vos services.</p>
+                        <?php endif; ?>
+
+            </div>
         </main>
     </div>
 </div>
+<!-- profile d'utilisateur  -->
 
-    <script src="../../assets/js/script.js"></script>
-    <script src="../../assets/js/utils/date-formatter.js"></script>
+<div  class="fixed inset-0 w-3/4 sm:scale[1/2] ml-[300px] bg-gray-900 bg-opacity-50 z-100 flex justify-center items-center hidden">
+<div class="p-16">
+    <div class="p-8 bg-white shadow mt-24">
+        <div class="grid grid-cols-1 md:grid-cols-3">
+            <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+                <div>
+                    <p class="font-bold text-gray-700 text-xl"><?php $query1 = "SELECT COUNT(DISTINCT client_id) AS nombre_clients FROM reservations WHERE avocat_id = $user_id";
+
+                            $result = mysqli_query($conn, $query1);
+
+                            if ($result) {
+                                $row = mysqli_fetch_assoc($result);
+                                $nombre_clients = $row['nombre_clients'];
+                                echo "$nombre_clients";
+                            } else {
+                                echo "Erreur lors de l'exécution de la requête : " . mysqli_error($conn);
+                            } ?></p>
+                    <p class="text-gray-400">Clients</p>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-700 text-xl"><?php echo $avocat['annee_experience']; ?></p>
+                    <p class="text-gray-400">Années d'expérience</p>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-700 text-xl">10</p>
+                    <p class="text-gray-400">Commentaires</p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center">
+                    <img src="C:/Users/safiy/OneDrive/Images/<?php echo $avocat['picture']; ?>" alt="Profil de l'avocat" class="w-48 h-48 rounded-full object-cover">
+                </div>
+            </div>
+
+            <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+                <button class="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                    Connecter
+                </button>
+                <button id="closeModalBtn" class="text-white py-2 px-4  rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center border-b pb-12">
+            <h1 class="text-4xl font-medium text-gray-700">
+                <?php echo $avocat['name'] . ' ' . $avocat['first_name']; ?>
+            </h1>
+            <p class="font-light text-gray-600 mt-3"><?php echo $avocat['location']; ?></p>
+            <p class="mt-8 text-gray-500">Spécialité : <?php echo $avocat['specialite']; ?></p>
+            <p class="mt-2 text-gray-500"><?php echo $avocat['email']; ?></p>
+            <p class="mt-2 text-gray-500"><?php echo $avocat['phone_number']; ?></p>
+        </div>
+
+        <div class="mt-12 flex flex-col justify-center">
+            <p class="text-gray-600 text-center font-light lg:px-16">
+                <?php echo $avocat['biography']; ?>
+            </p>
+            <button class="text-indigo-500 py-2 px-4 font-medium mt-4">
+                Afficher plus
+            </button>  
+        </div>
+    </div>
+</div>
+</div>
+
+ <!-- -------------------------------------------------------------------------------------- -->
+    <!-- <script src="../../assets/js/script.js"></script>
+    <script src="../../assets/js/utils/date-formatter.js"></script> -->
     <!-- <script src="../../assets/js/avocat.js"></script> -->
    <?php mysqli_close($conn); ?>
 </body>
