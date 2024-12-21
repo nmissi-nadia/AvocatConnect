@@ -271,26 +271,10 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                     </ul>
                 </div>
             </div>
-
-            <!-- Section : Consultation des profils des avocats -->
-               <div class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
-                  <h2 class="text-2xl font-semibold text-gray-700 mb-6">Profils des Avocats</h2>
-
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                     <?php while ($avocat = mysqli_fetch_assoc($resultAvocats)): ?>
-                           <div class="bg-white p-6 rounded-lg shadow-lg">
-                              <img src="C:/Users/safiy/OneDrive/Images/<?php echo $avocat['picture']; ?>" alt="Avatar de l'avocat" class="w-24 h-24 rounded-full mx-auto">
-                              <h3 class="text-xl text-center mt-4"><?php echo $avocat['name'] . ' ' . $avocat['first_name']; ?></h3>
-                              <p class="text-gray-600 text-center mt-2"><?php echo $avocat['email']; ?></p>
-                              <p class="text-center mt-4">
-                                 <button onclick="openReservationModal(<?php echo $avocat['us_id']; ?>)" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                                       Réserver
-                                 </button>
-                              </p>
-                           </div>
-                     <?php endwhile; ?>
-                  </div>
-               </div>
+            <?php 
+               include "avocat2.php";
+            ?>
+            
                <!-- Section : Gestion des réservations -->
             <div class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
                <h2 class="text-2xl font-semibold text-gray-700 mb-6">Vos Réservations</h2>
@@ -340,6 +324,87 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                      </form>
                   </div>
                </div>
+
+
+               <!-- profile d'utilisateur  -->
+
+               <div id="profil" class="fixed inset-0 w-3/4 sm:scale[1/2] ml-[300px] bg-gray-900 bg-opacity-50 z-100 flex justify-center items-center">
+                  <div class="p-8 bg-white shadow-lg rounded-lg">
+                     <!-- Informations principales -->
+                     <div class="grid grid-cols-1 md:grid-cols-3">
+                           <div class="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
+                              <!-- Nombre de clients -->
+                              <div>
+                                 <p class="font-bold text-gray-700 text-xl">
+                                       <?php 
+                                          $query1 = "SELECT COUNT(DISTINCT client_id) as nombre_clients FROM reservations WHERE avocat_id =".avocat['us_id'];
+                                          $result = mysqli_query($conn, $query1);
+                                          if ($result) {
+                                             $row = mysqli_fetch_assoc($result);
+                                             echo $row['nombre_clients'];
+                                          } else {
+                                             echo "Erreur";
+                                          }
+                                       ?>
+                                 </p>
+                                 <p class="text-gray-400">Clients</p>
+                              </div>
+
+                              <!-- Années d'expérience -->
+                              <div>
+                                 <p class="font-bold text-gray-700 text-xl"><?php echo $avocat['annee_experience']; ?></p>
+                                 <p class="text-gray-400">Années d'expérience</p>
+                              </div>
+
+                              <!-- Nombre de commentaires -->
+                              <div>
+                                 <p class="font-bold text-gray-700 text-xl">10</p>
+                                 <p class="text-gray-400">Commentaires</p>
+                              </div>
+                           </div>
+
+                           <!-- Image de profil -->
+                           <div class="relative">
+                              <div class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center">
+                                 <img src="uploads/<?php echo $avocat['picture']; ?>" alt="Profil de l'avocat" class="w-48 h-48 rounded-full object-cover">
+                              </div>
+                           </div>
+
+                           <!-- Actions -->
+                           <div class="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+                              <button class="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                                 Connecter
+                              </button>
+                              <button id="closeModalBtn" class="text-white py-2 px-4 rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                                 Fermer
+                              </button>
+                           </div>
+                     </div>
+
+                     <!-- Informations détaillées -->
+                     <div class="mt-20 text-center border-b pb-12">
+                           <h1 class="text-4xl font-medium text-gray-700">
+                              <?php echo htmlspecialchars($avocat['name'] . ' ' . $avocat['first_name']); ?>
+                           </h1>
+                           <p class="font-light text-gray-600 mt-3"><?php echo htmlspecialchars($avocat['location']); ?></p>
+                           <p class="mt-8 text-gray-500">Spécialité : <?php echo htmlspecialchars($avocat['specialite']); ?></p>
+                           <p class="mt-2 text-gray-500"><?php echo htmlspecialchars($avocat['email']); ?></p>
+                           <p class="mt-2 text-gray-500"><?php echo htmlspecialchars($avocat['phone_number']); ?></p>
+                     </div>
+
+                     <!-- Biographie -->
+                     <div class="mt-12 flex flex-col justify-center">
+                           <p class="text-gray-600 text-center font-light lg:px-16">
+                              <?php echo nl2br(htmlspecialchars($avocat['biography'])); ?>
+                           </p>
+                           <button class="text-indigo-500 py-2 px-4 font-medium mt-4">
+                              Afficher plus
+                           </button>
+                     </div>
+                  </div>
+               </div>
+
+
         </main>
     </div>
 </div>
@@ -352,3 +417,47 @@ $resultReservations = mysqli_query($conn, $queryReservations);
 </body>
 </html>
 <?php mysqli_close($conn); ?>
+
+<script>
+   function openProfileModal(avocatId) {
+    // Sélecteurs des éléments de la modal
+    const modal = document.getElementById('profileModal');
+    const modalName = document.getElementById('modalName');
+    const modalSpecialite = document.getElementById('modalSpecialite');
+    const modalEmail = document.getElementById('modalEmail');
+    const modalPhone = document.getElementById('modalPhone');
+    const modalBio = document.getElementById('modalBio');
+    const modalImage = document.getElementById('modalImage');
+
+    // Effectuer une requête AJAX pour récupérer les données de l'avocat
+    fetch(`get_avocat_data.php?avocat_id=${avocatId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Remplir la modal avec les données reçues
+                modalName.textContent = `${data.name} ${data.first_name}`;
+                modalSpecialite.textContent = data.specialite;
+                modalEmail.textContent = data.email;
+                modalPhone.textContent = data.phone_number;
+                modalBio.textContent = data.biography;
+                modalImage.src = `uploads/${data.picture}`;
+
+                // Afficher la modal
+                modal.classList.remove('hidden');
+            } else {
+                alert("Erreur : Impossible de charger les données de l'avocat.");
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors de la récupération des données :", error);
+            alert("Erreur lors du chargement des données.");
+        });
+}
+
+// Fonction pour fermer la modal
+function closeProfileModal() {
+    const modal = document.getElementById('profileModal');
+    modal.classList.add('hidden');
+}
+
+</script>
