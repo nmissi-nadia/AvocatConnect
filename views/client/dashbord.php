@@ -1,5 +1,6 @@
 <?php
 // Démarrer la session
+require "../db_connect.php";
 session_start();
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Client') {
@@ -278,7 +279,7 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                      <?php while ($avocat = mysqli_fetch_assoc($resultAvocats)): ?>
                            <div class="bg-white p-6 rounded-lg shadow-lg">
-                              <img src="uploads/<?php echo $avocat['picture']; ?>" alt="Avatar de l'avocat" class="w-24 h-24 rounded-full mx-auto">
+                              <img src="C:/Users/safiy/OneDrive/Images/<?php echo $avocat['picture']; ?>" alt="Avatar de l'avocat" class="w-24 h-24 rounded-full mx-auto">
                               <h3 class="text-xl text-center mt-4"><?php echo $avocat['name'] . ' ' . $avocat['first_name']; ?></h3>
                               <p class="text-gray-600 text-center mt-2"><?php echo $avocat['email']; ?></p>
                               <p class="text-center mt-4">
@@ -288,6 +289,55 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                               </p>
                            </div>
                      <?php endwhile; ?>
+                  </div>
+               </div>
+               <!-- Section : Gestion des réservations -->
+            <div class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+               <h2 class="text-2xl font-semibold text-gray-700 mb-6">Vos Réservations</h2>
+
+               <?php if (mysqli_num_rows($resultReservations) > 0): ?>
+                  <table class="min-w-full table-auto">
+                        <thead>
+                           <tr class="bg-gray-200 text-gray-700 text-left">
+                              <th class="py-3 px-4">ID</th>
+                              <th class="py-3 px-4">Avocat</th>
+                              <th class="py-3 px-4">Date</th>
+                              <th class="py-3 px-4">Statut</th>
+                              <th class="py-3 px-4">Actions</th>
+                           </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                           <?php while ($reservation = mysqli_fetch_assoc($resultReservations)): ?>
+                              <tr class="border-b hover:bg-gray-100">
+                                    <td class="py-3 px-4"><?php echo $reservation['reservation_id']; ?></td>
+                                    <td class="py-3 px-4"><?php echo $reservation['avocat_name']; ?></td>
+                                    <td class="py-3 px-4"><?php echo date('d/m/Y', strtotime($reservation['reservation_date'])); ?></td>
+                                    <td class="py-3 px-4"><?php echo ucfirst($reservation['statut']); ?></td>
+                                    <td class="py-3 px-4">
+                                       <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700">Modifier</button>
+                                       <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700">Annuler</button>
+                                    </td>
+                              </tr>
+                           <?php endwhile; ?>
+                        </tbody>
+                  </table>
+               <?php else: ?>
+                  <p class="text-center text-gray-500 mt-8">Aucune réservation trouvée.</p>
+               <?php endif; ?>
+            </div>
+                     <!-- MODAL de réservation -->
+               <div id="reservationModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden flex justify-center items-center">
+                  <div class="bg-white p-8 rounded-lg shadow-lg w-11/12 md:w-1/2">
+                     <button id="closeModal" class="absolute top-4 right-4 text-red-500 text-xl">&times;</button>
+                     <h2 class="text-xl font-bold text-center mb-4">Réserver une consultation</h2>
+                     <form action="create_reservation.php" method="POST">
+                           <input type="hidden" name="client_id" value="<?php echo $client_id; ?>">
+                           <input type="hidden" name="avocat_id" id="avocat_id">
+                           <div class="mb-4">
+                              <input type="date" name="date" class="w-full p-4 border rounded-lg" required>
+                           </div>
+                           <button type="submit" class="w-full bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-700">Réserver</button>
+                     </form>
                   </div>
                </div>
         </main>
