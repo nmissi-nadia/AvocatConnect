@@ -8,7 +8,7 @@ cd /d "C:\laragon\www\AvocatConnect"
 git add .
 
 :: Commit avec un message automatique
-git commit -m "Backend dashboard avocat"
+git commit -m "Backend dashboard client"
 
 :: Pousser les modifications sur la branche principale (main ou master)
 git push origin main

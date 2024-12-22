@@ -36,6 +36,28 @@ $queryReservations = "
 $resultReservations = mysqli_query($conn, $queryReservations);
 
 
+// Si une requête POST est reçue
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   $type = $_POST['type'] ?? ''; // Récupérer le type de jugement envoyé via POST
+
+   // Construire la requête SQL
+   $query24 = $type 
+       ? "SELECT u.us_id AS id, u.name, u.first_name FROM utilisateur u JOIN infos i ON u.us_id = i.avocat_id WHERE i.specialite = '$type'"
+       : "SELECT u.us_id AS id, u.name, u.first_name FROM utilisateur u WHERE u.role = 'Avocat'";
+
+   $result12 = mysqli_query($conn, $query24);
+   $lawyers = [];
+   while ($row = mysqli_fetch_assoc($result12)) {
+       $lawyers[] = $row;
+   }
+
+   // Générer le tableau JSON en tant que tableau JavaScript
+   echo "<script>";
+   echo "const lawyers = " . json_encode($lawyers) . ";";
+   echo "console.log(lawyers);"; // Affichez les avocats dans la console JS
+   echo "</script>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +115,7 @@ $resultReservations = mysqli_query($conn, $queryReservations);
       <a href="userlogin.php" class="py-2 text-white bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full text-center">Connexion</a>
     </div>
 
-<div class="p-4 mt-14 sm:ml-64">
+
    <div class="min-h-screen mt-14">
         <header class="bg-white shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
@@ -155,7 +177,7 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                                     </label>
                                     <select id="judgmentType" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
                                           <option value="">Sélectionnez un type</option>
-                                          <option value="Civil">Civil</option>
+                                          <option value="droit_numérique">Civil</option>
                                           <option value="Criminal">Pénal</option>
                                           <option value="Family">Famille</option>
                                           <option value="Commercial">Commercial</option>
@@ -183,49 +205,52 @@ $resultReservations = mysqli_query($conn, $queryReservations);
             </div>
             <script>
                // Gestion du calendrier
-document.getElementById("calendarDays").addEventListener("click", (event) => {
-    if (event.target.classList.contains("day")) {
-        const selectedDate = event.target.dataset.date;
-        document.getElementById("modalDate").innerText = `Rendez-vous pour le ${selectedDate}`;
-        document.getElementById("appointmentForm").date.value = selectedDate; // Stocker la date
-        document.getElementById("appointmentModal").classList.remove("hidden");
-    }
-});
+                  document.getElementById("calendarDays").addEventListener("click", (event) => {
+                     if (event.target.classList.contains("day")) {
+                        const selectedDate = event.target.dataset.date;
+                        document.getElementById("modalDate").innerText = `Rendez-vous pour le ${selectedDate}`;
+                        document.getElementById("appointmentForm").date.value = selectedDate; // Stocker la date
+                        document.getElementById("appointmentModal").classList.remove("hidden");
+                     }
+                  });
 
-// Gestion du bouton pour ouvrir le calendrier
-document.querySelector("#rdv button").addEventListener("click", () => {
-    document.getElementById("calendar").classList.toggle("hidden");
-});
+                  // Gestion du bouton pour ouvrir le calendrier
+                  document.querySelector("#rdv button").addEventListener("click", () => {
+                     document.getElementById("calendar").classList.toggle("hidden");
+                  });
 
-// Gestion du type de jugement -> Charge les avocats associés
-document.getElementById("judgmentType").addEventListener("change", (event) => {
-    const judgmentType = event.target.value;
-    const lawyerSelect = document.getElementById("lawyer");
-    lawyerSelect.innerHTML = '<option value="">Chargement...</option>';
-    lawyerSelect.disabled = true;
+                  // Gestion du type de jugement -> Charge les avocats associés
+                  document.getElementById("judgmentType").addEventListener("change", (event) => {
+                     const judgmentType = event.target.value;
+                     const lawyerSelect = document.getElementById("lawyer");
+                     lawyerSelect.innerHTML = '<option value="">Chargement...</option>';
+                     lawyerSelect.disabled = true;
+                     console.log(judgmentType);
+                     console.log(`Requête envoyée à : avocates.php?type=${judgmentType}`);
 
-    fetch(`get_lawyers.php?type=${judgmentType}`)
-        .then(response => response.json())
-        .then(data => {
-            lawyerSelect.innerHTML = '<option value="">Sélectionnez un avocat</option>';
-            data.forEach(lawyer => {
-                lawyerSelect.innerHTML += `<option value="${lawyer.id}">${lawyer.name} ${lawyer.first_name}</option>`;
-            });
-            lawyerSelect.disabled = false;
-        })
-        .catch(error => {
-            console.error("Erreur :", error);
-            lawyerSelect.innerHTML = '<option value="">Erreur lors du chargement</option>';
-        });
-});
+                     fetch(`avocates.php?type=${judgmentType}`)
+                        .then(response => response.json())
+                        .then(data => {
+                              lawyerSelect.innerHTML = '<option value="">Sélectionnez un avocat</option>';
+                              console.log(data);
+                              data.forEach(lawyer => {
+                                 lawyerSelect.innerHTML += `<option value="${lawyer.id}">${lawyer.name} ${lawyer.first_name}</option>`;
+                              });
+                              lawyerSelect.disabled = false;
+                        })
+                        .catch(error => {
+                              console.error("Erreur :", error);
+                              lawyerSelect.innerHTML = '<option value="">Erreur lors du chargement</option>';
+                        });
+                  });
 
-// Fermeture de la modal
-document.getElementById("closeModal").addEventListener("click", () => {
-    document.getElementById("appointmentModal").classList.add("hidden");
-});
+                  // Fermeture de la modal
+                  document.getElementById("closeModal").addEventListener("click", () => {
+                     document.getElementById("appointmentModal").classList.add("hidden");
+                  });
 
             </script>
-
+              
                   <div class="max-w-7xl mx-auto px-4 py-8">
                         <div class="mb-8">
                               <h2 class="text-2xl font-semibold mb-4">Rendez-vous à venir</h2>
@@ -358,7 +383,7 @@ document.getElementById("closeModal").addEventListener("click", () => {
 
 
         </main>
-    </div>
+
 </div>
 
 <script src="../../assets/js/script.js"></script>
