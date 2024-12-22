@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    while ($row = mysqli_fetch_assoc($result12)) {
        $lawyers[] = $row;
    }
-
+   echo "<script>const data = { lawyers: " . json_encode($lawyers) . " };</script>";
    // Générer le tableau JSON en tant que tableau JavaScript
    echo "<script>";
    echo "const lawyers = " . json_encode($lawyers) . ";";
@@ -239,33 +239,24 @@ closeModal.addEventListener("click", () => {
 });
 
 // Gestion du changement de type de jugement
-judgmentType.addEventListener("change", (event) => {
-    const type = event.target.value; // Type de jugement sélectionné
-    lawyerSelect.innerHTML = '<option value="">Chargement...</option>';
-    lawyerSelect.disabled = true;
+ocument.getElementById("judgmentType").addEventListener("change", (event) => {
+    const judgmentType = event.target.value;
+    const lawyerSelect = document.getElementById("lawyer");
+    
+    lawyerSelect.innerHTML = '<option value="">Sélectionnez un avocat</option>';
 
-    // Requête pour récupérer les avocats
-    fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `type=${type}`,
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            // Ajoute les options dans la liste déroulante
-            lawyerSelect.innerHTML = '<option value="">Sélectionnez un avocat</option>';
-            data.forEach((lawyer) => {
-                lawyerSelect.innerHTML += `<option value="${lawyer.id}">${lawyer.name} ${lawyer.first_name}</option>`;
-            });
-            lawyerSelect.disabled = false;
-        })
-        .catch((error) => {
-            console.error("Erreur lors du chargement des avocats :", error);
-            lawyerSelect.innerHTML = '<option value="">Erreur lors du chargement</option>';
-        });
+    // Filter lawyers based on the selected judgment type
+    const filteredLawyers = data.lawyers.filter(lawyer => 
+        judgmentType === "" || lawyer.specialite === judgmentType
+    );
+
+    // Populate the dropdown with filtered lawyers
+    filteredLawyers.forEach(lawyer => {
+        lawyerSelect.innerHTML += `<option value="${lawyer.id}">${lawyer.name} ${lawyer.firstName}</option>`;
+    });
+
+    lawyerSelect.disabled = filteredLawyers.length === 0;
 });
-
-
                   // Fermeture de la modal
                   document.getElementById("closeModal").addEventListener("click", () => {
                      document.getElementById("appointmentModal").classList.add("hidden");
