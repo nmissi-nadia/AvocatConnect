@@ -50,68 +50,51 @@ $resultReservations = mysqli_query($conn, $queryReservations);
 
 
 
-<button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-   <span class="sr-only">Open sidebar</span>
-   <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-   <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-   </svg>
-</button>
+<nav class="fixed top-0 w-full h-[70px] flex items-center justify-between bg-white shadow-md z-[100]">
+      <div class="flex items-center w-[150px] justify-between ml-[20px] md:ml-[40px]">
+        <a href="#" class="scale-[3] md:scale-[4]">
+          <img class="w-10 ml-10" src="../../assets/images/logo.png" alt="Logo du site" />
+        </a>
+      </div>
+      <div class="flex items-center">
+        <button class="block md:hidden text-2xl text-gray-700 mr-4" id="menu-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+      <div id="navbar-links" class="hidden md:flex justify-between items-center gap-6">
+        <a href="#avocat" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          Les avocats
+        </a>
+        <a href="#rdv" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          Rendez vous
+        </a>
+        <a href="#reserv" class="text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          Mes réservations 
+        </a>
+        <p class="flex items-center text-[15px] text-gray-600 hover:text-pink-300 transition-all duration-300 ease-in-out">
+          <i class="fa-regular fa-user text-pink-500"></i>&nbsp;&nbsp;<span id="profile">Profile</span>
+        </p>
+      </div>
+    
+      <!-- Espace et bouton de déconnexion -->
+      <div class="hidden md:flex items-center">
+        <a href="../logout.php" class="text-[15px] font-medium text-white leading-[26px] py-[9px] px-[25px] bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md transition-all duration-200 ease-in-out hover:bg-gradient-to-r hover:from-[#EC008C] hover:to-[#fc6767]">
+          Déconnexion
+        </a>
+        <div class="w-[50px]"></div>
+      </div>
+    </nav>
+    
+    
+    <div id="mobile-menu" class="hidden flex-col bg-white shadow-md absolute top-[70px] w-full p-4 md:hidden">
+      <a href="#avocat" class="py-2 text-gray-600 hover:text-pink-300">Les avocats</a>
+      <a href="#rdv" class="py-2 text-gray-600 hover:text-pink-300">Rendez vous</a>
+      <a href="#reserv" class="py-2 text-gray-600 hover:text-pink-300">Mes réservations</a>
+      <a href="userlogin.php" class="py-2 text-white bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full text-center">Connexion</a>
+    </div>
 
-<aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-      <ul class="space-y-2 font-medium">
-        <li>
-                    <div class="flex  w-full h-auto">
-                        <a href="#" class="scale-[4]">
-                            <img class="w-10 m-5 -mr-5" src="../../assets/images/logo.png" alt="Logo du site" />
-                        </a>
-                    </div>
-        </li>
-         <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <svg class="w-5 h-5 bg-pink text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                  <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                  <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-               </svg>
-               <span class="ms-3">Dashboard</span>
-            </a>
-         </li>
-        
-         
-         <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                  <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-               </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">Avocats</span>
-            </a>
-         </li>
-         <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                  <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
-               </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">Consultation</span>
-            </a>
-         </li>
-        
-         <li>
-            <a href="../logout.php" class="flex items-center p-2 text-gray-900 bg-gradient-to-r from-[#EC008C] via-[#fc6767] to-[#EC008C] rounded-full shadow-md rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-               <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
-                  <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
-                  <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z"/>
-               </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
-            </a>
-         </li>
-      </ul>
-      
-   </div>
-</aside>
-
-<div class="p-4 sm:ml-64">
-<div class="min-h-screen">
+<div class="p-4 mt-14 sm:ml-64">
+   <div class="min-h-screen mt-14">
         <header class="bg-white shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
                 <h1 class="text-2xl font-semibold text-gray-900">Mon Espace Client :<?php echo "$name "; ?></h1>
@@ -120,7 +103,7 @@ $resultReservations = mysqli_query($conn, $queryReservations);
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <!-- Quick Actions -->
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div id="rdv" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 <button onclick="" class="p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -129,8 +112,8 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                     <p class="mt-2 text-sm text-gray-500">Réserver une consultation</p>
                 </button>
 
-                     <div class="max-w-4xl mx-auto p-6">
-                           <div id="calendar" class="bg-white rounded-lg shadow-lg p-6">
+               <div  class="max-w-4xl mx-auto p-6">
+                     <div id="calendar" class="bg-white rounded-lg shadow-lg p-6">
                                  <div class="flex items-center justify-between mb-6">
                                     <button id="prevMonth" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -165,7 +148,7 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                                  </button>
                               </div>
 
-                              <form id="appointmentForm">
+                              <form action="rdv.php" id="appointmentForm">
                                  <div class="mb-4">
                                     <label class="block text-sm font-medium text-gray-700 mb-2">
                                           Type de jugement
@@ -198,7 +181,50 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                         </div>
                      </div>
             </div>
+            <script>
+               // Gestion du calendrier
+document.getElementById("calendarDays").addEventListener("click", (event) => {
+    if (event.target.classList.contains("day")) {
+        const selectedDate = event.target.dataset.date;
+        document.getElementById("modalDate").innerText = `Rendez-vous pour le ${selectedDate}`;
+        document.getElementById("appointmentForm").date.value = selectedDate; // Stocker la date
+        document.getElementById("appointmentModal").classList.remove("hidden");
+    }
+});
 
+// Gestion du bouton pour ouvrir le calendrier
+document.querySelector("#rdv button").addEventListener("click", () => {
+    document.getElementById("calendar").classList.toggle("hidden");
+});
+
+// Gestion du type de jugement -> Charge les avocats associés
+document.getElementById("judgmentType").addEventListener("change", (event) => {
+    const judgmentType = event.target.value;
+    const lawyerSelect = document.getElementById("lawyer");
+    lawyerSelect.innerHTML = '<option value="">Chargement...</option>';
+    lawyerSelect.disabled = true;
+
+    fetch(`get_lawyers.php?type=${judgmentType}`)
+        .then(response => response.json())
+        .then(data => {
+            lawyerSelect.innerHTML = '<option value="">Sélectionnez un avocat</option>';
+            data.forEach(lawyer => {
+                lawyerSelect.innerHTML += `<option value="${lawyer.id}">${lawyer.name} ${lawyer.first_name}</option>`;
+            });
+            lawyerSelect.disabled = false;
+        })
+        .catch(error => {
+            console.error("Erreur :", error);
+            lawyerSelect.innerHTML = '<option value="">Erreur lors du chargement</option>';
+        });
+});
+
+// Fermeture de la modal
+document.getElementById("closeModal").addEventListener("click", () => {
+    document.getElementById("appointmentModal").classList.add("hidden");
+});
+
+            </script>
 
                   <div class="max-w-7xl mx-auto px-4 py-8">
                         <div class="mb-8">
@@ -272,7 +298,7 @@ $resultReservations = mysqli_query($conn, $queryReservations);
                 </div>
             </div>
             <?php 
-               // include "avocat2.php";
+               include "avocat2.php";
             ?>
             
                <!-- Section : Gestion des réservations -->
@@ -337,9 +363,8 @@ $resultReservations = mysqli_query($conn, $queryReservations);
 
 <script src="../../assets/js/script.js"></script>
 <script src="../../assets/js/client.js"></script>
-<script src="../../assetsjs/data/apointment.js"></script>
-    <script src="../../assets/js/data/avocatt.js"></script>
-    <script src="../../assets/js/utils/date-formatter.js"></script>
+<script src="../../assets/js/avocatt.js"></script>
+<script src="../../assets/js/date-formatter.js"></script>
 </body>
 </html>
 <?php mysqli_close($conn); ?>
