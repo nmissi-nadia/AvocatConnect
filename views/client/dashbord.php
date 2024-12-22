@@ -193,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                           <option value="">Sélectionnez d'abord un type de jugement</option>
                                     </select>
                                  </div>
-
+                                 
                                  <div class="flex justify-end">
                                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
                                           Confirmer le rendez-vous
@@ -219,30 +219,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                      document.getElementById("calendar").classList.toggle("hidden");
                   });
 
-                  // Gestion du type de jugement -> Charge les avocats associés
-                  document.getElementById("judgmentType").addEventListener("change", (event) => {
-                     const judgmentType = event.target.value;
-                     const lawyerSelect = document.getElementById("lawyer");
-                     lawyerSelect.innerHTML = '<option value="">Chargement...</option>';
-                     lawyerSelect.disabled = true;
-                     console.log(judgmentType);
-                     console.log(`Requête envoyée à : avocates.php?type=${judgmentType}`);
+                 // Gestion de l'ouverture et fermeture de la modal
+const appointmentModal = document.getElementById("appointmentModal");
+const closeModal = document.getElementById("closeModal");
+const judgmentType = document.getElementById("judgmentType");
+const lawyerSelect = document.getElementById("lawyer");
 
-                     fetch(`avocates.php?type=${judgmentType}`)
-                        .then(response => response.json())
-                        .then(data => {
-                              lawyerSelect.innerHTML = '<option value="">Sélectionnez un avocat</option>';
-                              console.log(data);
-                              data.forEach(lawyer => {
-                                 lawyerSelect.innerHTML += `<option value="${lawyer.id}">${lawyer.name} ${lawyer.first_name}</option>`;
-                              });
-                              lawyerSelect.disabled = false;
-                        })
-                        .catch(error => {
-                              console.error("Erreur :", error);
-                              lawyerSelect.innerHTML = '<option value="">Erreur lors du chargement</option>';
-                        });
-                  });
+// Ouvre la modal avec la date sélectionnée
+function openModal(selectedDate) {
+    const modalDate = document.getElementById("modalDate");
+    modalDate.textContent = `Rendez-vous pour le ${selectedDate}`;
+    document.getElementById("appointmentForm").date = selectedDate; // Stocker la date
+    appointmentModal.classList.remove("hidden");
+}
+
+// Ferme la modal
+closeModal.addEventListener("click", () => {
+    appointmentModal.classList.add("hidden");
+});
+
+// Gestion du changement de type de jugement
+judgmentType.addEventListener("change", (event) => {
+    const type = event.target.value; // Type de jugement sélectionné
+    lawyerSelect.innerHTML = '<option value="">Chargement...</option>';
+    lawyerSelect.disabled = true;
+
+    // Requête pour récupérer les avocats
+    fetch("", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `type=${type}`,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            // Ajoute les options dans la liste déroulante
+            lawyerSelect.innerHTML = '<option value="">Sélectionnez un avocat</option>';
+            data.forEach((lawyer) => {
+                lawyerSelect.innerHTML += `<option value="${lawyer.id}">${lawyer.name} ${lawyer.first_name}</option>`;
+            });
+            lawyerSelect.disabled = false;
+        })
+        .catch((error) => {
+            console.error("Erreur lors du chargement des avocats :", error);
+            lawyerSelect.innerHTML = '<option value="">Erreur lors du chargement</option>';
+        });
+});
+
 
                   // Fermeture de la modal
                   document.getElementById("closeModal").addEventListener("click", () => {
