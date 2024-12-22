@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    while ($row = mysqli_fetch_assoc($result12)) {
        $lawyers[] = $row;
    }
+   echo "console.log(lawyers);";
    echo "<script>const data = { lawyers: " . json_encode($lawyers) . " };</script>";
    // Générer le tableau JSON en tant que tableau JavaScript
    echo "<script>";
@@ -265,6 +266,32 @@ ocument.getElementById("judgmentType").addEventListener("change", (event) => {
             </script>
               
                   <div class="max-w-7xl mx-auto px-4 py-8">
+
+                        <?php
+
+                           $query = "
+                           SELECT r.reservation_id, r.reservation_date, r.statut, 
+                                 u.name AS avocat_name, u.first_name AS avocat_first_name
+                           FROM reservations r
+                           JOIN utilisateur u ON r.avocat_id = u.us_id
+                           WHERE r.client_id = ? AND r.reservation_date >= CURRENT_DATE
+                           ORDER BY r.reservation_date ASC
+                           LIMIT 1;
+                           ";
+
+                           $stmt = mysqli_prepare($conn, $query);
+                           mysqli_stmt_bind_param($stmt, 'i', $client_id);
+                           mysqli_stmt_execute($stmt);
+                           $result = mysqli_stmt_get_result($stmt);
+
+                           if ($result && mysqli_num_rows($result) > 0) {
+                           $rendezvous = mysqli_fetch_assoc($result);
+                           echo "Prochain rendez-vous : " . $rendezvous['reservation_date'] . " avec " .
+                              $rendezvous['avocat_name'] . " " . $rendezvous['avocat_first_name'];
+                           } else {
+                           echo "Aucun rendez-vous à venir.";
+                           }
+                        ?>
                         <div class="mb-8">
                               <h2 class="text-2xl font-semibold mb-4">Rendez-vous à venir</h2>
                               <div id="upcomingAppointments" class="grid gap-4">
